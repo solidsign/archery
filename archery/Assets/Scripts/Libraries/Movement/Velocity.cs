@@ -22,6 +22,26 @@ namespace MyLibs.Movement
             return new Velocity(left.Value - right.Value);
         }
         
+        public static Velocity operator +(Vector3 left, Velocity right)
+        {
+            return new Velocity(left + right.Value);
+        }
+        
+        public static Velocity operator -(Vector3 left, Velocity right)
+        {
+            return new Velocity(left - right.Value);
+        }
+        
+        public static Velocity operator +(Velocity left, Vector3 right)
+        {
+            return new Velocity(left.Value + right);
+        }
+        
+        public static Velocity operator -(Velocity left, Vector3 right)
+        {
+            return new Velocity(left.Value - right);
+        }
+        
         public static Velocity operator *(Velocity left, float right)
         {
             return new Velocity(left.Value * right);
@@ -51,5 +71,7 @@ namespace MyLibs.Movement
         {
             return new Velocity(left.Value / right);
         }
+        
+        public static implicit operator Vector3(Velocity velocity) => velocity.Value;
     }
 }

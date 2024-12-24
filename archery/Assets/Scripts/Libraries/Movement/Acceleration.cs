@@ -52,5 +52,7 @@ namespace MyLibs.Movement
         {
             return new Acceleration(left.Value / right);
         }
+        
+        public static implicit operator Vector3(Acceleration acceleration) => acceleration.Value;
     }
 }

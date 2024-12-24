@@ -10,10 +10,11 @@ namespace MyLibs.Movement
         
         private IMovementState _currentState;
 
-        public MovementStateMachine(IReadOnlyList<IMovementState> states, IReadOnlyList<IMovementStateTransition> transitions)
+        public MovementStateMachine(IReadOnlyList<IMovementState> states, IReadOnlyList<IMovementStateTransition> transitions, IMovementState initialState)
         {
             _states = states;
             _transitions = transitions;
+            _currentState = initialState;
         }
         
         public void Update()

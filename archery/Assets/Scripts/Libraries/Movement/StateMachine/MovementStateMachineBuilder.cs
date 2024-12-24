@@ -8,8 +8,15 @@ namespace MyLibs.Movement
     {
         private readonly Dictionary<Type, IMovementState> _states = new();
         private readonly List<IMovementStateTransition> _transitions = new();
+        private IMovementState _initialState;
 
         public MovementStateMachineBuilder() { }
+
+        public MovementStateMachineBuilder AddInitialState<T>(IMovementState state) where T : IMovementState
+        {
+            _initialState = state;
+            return AddState<T>(state);
+        }
         
         public MovementStateMachineBuilder AddState<T>(IMovementState state) where T : IMovementState
         {
@@ -24,6 +31,13 @@ namespace MyLibs.Movement
             return this;
         }
         
-        public IMovementStateMachine Build() => new MovementStateMachine(_states.Values.ToList(), _transitions);
+        public IMovementStateMachine Build()
+        {
+            if (_initialState == null) throw new Exception($"Initial state can not be null");
+            if (_states.Count == 0) throw new Exception($"States can not be empty");
+            if (_transitions.Count == 0) throw new Exception($"Transitions can not be empty");
+            
+            return new MovementStateMachine(_states.Values.ToList(), _transitions, _initialState);
+        }
     }
 }
