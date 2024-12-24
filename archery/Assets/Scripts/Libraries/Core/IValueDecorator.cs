@@ -1,4 +1,4 @@
-namespace Game.Core
+namespace MyLibs.Core
 {
     public interface IValueDecorator<T> where T : struct
     {

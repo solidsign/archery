@@ -1,0 +1,16 @@
+{
+    "name": "Movement",
+    "rootNamespace": "MyLibs.Movement",
+    "references": [
+        "GUID:f458353ac0ef4339990802f43a66d11c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

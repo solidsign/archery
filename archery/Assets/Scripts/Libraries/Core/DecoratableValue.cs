@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game.Core
+namespace MyLibs.Core
 {
     public abstract class DecoratableValue<T> : IDecoratableValue<T> where T : struct
     {

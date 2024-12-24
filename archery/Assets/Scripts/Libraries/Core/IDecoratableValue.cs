@@ -1,4 +1,4 @@
-namespace Game.Core
+namespace MyLibs.Core
 {
     public interface IDecoratableValue<T> : IValue<T> where T : struct
     {

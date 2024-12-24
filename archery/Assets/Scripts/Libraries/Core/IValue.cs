@@ -1,4 +1,4 @@
-namespace Game.Core
+namespace MyLibs.Core
 {
     public interface IValue<T> where T : struct
     {

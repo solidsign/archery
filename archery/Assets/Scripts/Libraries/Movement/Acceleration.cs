@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Core
+namespace MyLibs.Movement
 {
     public readonly struct Acceleration
     {
