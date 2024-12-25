@@ -4,23 +4,34 @@ using System.Linq;
 
 namespace MyLibs.Movement
 {
+    public interface IPlayerComponentsHolder { }
+
+    public interface IPlayerComponentsHolderDependent
+    {
+        void Initialize(IPlayerComponentsHolder playerComponentsHolder);
+    }
+    
     public class MovementStateMachineBuilder
     {
+        private readonly IPlayerComponentsHolder _playerComponentsHolder;
         private readonly Dictionary<Type, IMovementState> _states = new();
         private readonly List<IMovementStateTransition> _transitions = new();
         private IMovementState _initialState;
 
-        public MovementStateMachineBuilder() { }
+        public MovementStateMachineBuilder(IPlayerComponentsHolder playerComponentsHolder)
+        {
+            _playerComponentsHolder = playerComponentsHolder;
+        }
 
-        public MovementStateMachineBuilder AddInitialState<T>(IMovementState state) where T : IMovementState
+        public MovementStateMachineBuilder AddInitialState(IMovementState state)
         {
             _initialState = state;
-            return AddState<T>(state);
+            return AddState(state);
         }
         
-        public MovementStateMachineBuilder AddState<T>(IMovementState state) where T : IMovementState
+        public MovementStateMachineBuilder AddState(IMovementState state)
         {
-            _states.Add(typeof(T), state);
+            _states.Add(state.GetType(), state);
             return this;
         }
         
@@ -36,6 +47,16 @@ namespace MyLibs.Movement
             if (_initialState == null) throw new Exception($"Initial state can not be null");
             if (_states.Count == 0) throw new Exception($"States can not be empty");
             if (_transitions.Count == 0) throw new Exception($"Transitions can not be empty");
+            
+            foreach (var (_, movementState) in _states)
+            {
+                movementState.Initialize(_playerComponentsHolder);
+            }
+            
+            foreach (var transition in _transitions)
+            {
+                transition.Initialize(_playerComponentsHolder);
+            }
             
             return new MovementStateMachine(_states.Values.ToList(), _transitions, _initialState);
         }
