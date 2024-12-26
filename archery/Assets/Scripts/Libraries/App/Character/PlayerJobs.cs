@@ -1,0 +1,31 @@
+using System.Collections.Generic;
+
+namespace Game.Libraries.App.Character
+{
+    public class PlayerJobs
+    {
+        private readonly List<IPlayerJob> _jobs = new();
+        
+        public void Add(IPlayerJob job)
+        {
+            _jobs.Add(job);
+        }
+
+        public void Update()
+        {
+            if (_jobs.Count == 0) return;
+            
+            foreach (var playerJob in _jobs)
+            {
+                playerJob.Update();
+            }
+
+            _jobs.RemoveAll(x => x.IsDone is false);
+        }
+
+        public bool HasJob<T>()
+        {
+            return _jobs.Exists(x => x is T);
+        }
+    }
+}

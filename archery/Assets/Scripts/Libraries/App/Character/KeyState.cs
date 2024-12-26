@@ -2,8 +2,8 @@ namespace Game.Libraries.App.Character
 {
     public struct KeyState
     {
-        bool IsPressed { get; }
-        bool IsDown { get; }
-        bool IsUp { get; }
+        public bool IsPressed { get; }
+        public bool IsDown { get; }
+        public bool IsUp { get; }
     }
 }

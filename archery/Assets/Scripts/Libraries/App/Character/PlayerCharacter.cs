@@ -4,13 +4,11 @@ namespace Game.Libraries.App.Character
 {
     public class PlayerCharacter
     {
-        public App App { get; }
         public PlayerComponentsHolder Components { get; }
         public IMovementStateMachine MovementStateMachine { get; }
 
-        public PlayerCharacter(App app, PlayerComponentsHolder components, IMovementStateMachine movementStateMachine)
+        public PlayerCharacter(PlayerComponentsHolder components, IMovementStateMachine movementStateMachine)
         {
-            App = app;
             Components = components;
             MovementStateMachine = movementStateMachine;
         }
@@ -21,6 +19,7 @@ namespace Game.Libraries.App.Character
             Components.Collisions.Update();
             MovementStateMachine.Update();
             Components.Properties.Update();
+            Components.Jobs.Update();
         }
     }
 }

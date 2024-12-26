@@ -4,12 +4,10 @@ namespace Game.Libraries.App.Character
 {
     public class PlayerCharacterBuilder
     {
-        private readonly App _app;
         private readonly PlayerComponentsHolder _playerComponentsHolder;
 
-        public PlayerCharacterBuilder(App app, PlayerComponentsHolder playerComponentsHolder)
+        public PlayerCharacterBuilder(PlayerComponentsHolder playerComponentsHolder)
         {
-            _app = app;
             _playerComponentsHolder = playerComponentsHolder;
         }
         
@@ -17,11 +15,12 @@ namespace Game.Libraries.App.Character
         {
             var movementStateMachine = new MovementStateMachineBuilder(_playerComponentsHolder)
                 .AddInitialState(new StandPlayerMovementState())
-                .AddState(new RunPlayerMovementState(_app.Time))
+                .AddState(new RunPlayerMovementState())
                 .AddState(new JumpPlayerMovementState())
                 .AddState(new InAirPlayerMovementState())
                 .AddState(new SlidePlayerMovementState())
                 .AddState(new InertialRunPlayerMovementState())
+                .AddState(new CrouchPlayerMovementState())
                 .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new StandToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new AnyToInAirPlayerMovementTransition())
@@ -30,9 +29,10 @@ namespace Game.Libraries.App.Character
                 .AddTransition<SlidePlayerMovementState>(new GroundedSpeedToSlidePlayerMovementTransition())
                 .AddTransition<InertialRunPlayerMovementState>(new InAirToInertialRunPlayerMovementTransition())
                 .AddTransition<SlidePlayerMovementState>(new InAirToSlidePlayerMovementTransition())
+                .AddTransition<CrouchPlayerMovementState>(new GroundedToCrouchPlayerMovementTransition())
                 .Build();
 
-            return new PlayerCharacter(_app, _playerComponentsHolder, movementStateMachine);
+            return new PlayerCharacter(_playerComponentsHolder, movementStateMachine);
         }
     }
 }
