@@ -5,14 +5,12 @@ namespace MyLibs.Movement
 {
     internal class MovementStateMachine : IMovementStateMachine
     {
-        private readonly IReadOnlyList<IMovementState> _states;
         private readonly IReadOnlyList<IMovementStateTransition> _transitions;
         
         private IMovementState _currentState;
 
-        public MovementStateMachine(IReadOnlyList<IMovementState> states, IReadOnlyList<IMovementStateTransition> transitions, IMovementState initialState)
+        public MovementStateMachine(IReadOnlyList<IMovementStateTransition> transitions, IMovementState initialState)
         {
-            _states = states;
             _transitions = transitions;
             _currentState = initialState;
         }

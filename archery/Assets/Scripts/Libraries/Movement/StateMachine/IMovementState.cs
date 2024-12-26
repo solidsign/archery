@@ -1,9 +1,8 @@
-using MyLibs.Core;
-
 namespace MyLibs.Movement
 {
-    public interface IMovementState : IUpdatable, IPlayerComponentsHolderDependent
+    public interface IMovementState : IPlayerComponentsHolderDependent
     {
+        void Update();
         void OnExit();
         void OnEnter();
     }

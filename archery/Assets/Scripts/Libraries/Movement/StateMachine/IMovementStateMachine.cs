@@ -1,9 +1,7 @@
-using MyLibs.Core;
-
 namespace MyLibs.Movement
 {
-    public interface IMovementStateMachine : IUpdatable
+    public interface IMovementStateMachine
     {
-        
+        void Update();
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MyLibs.Movement
 {
@@ -58,7 +57,7 @@ namespace MyLibs.Movement
                 transition.Initialize(_playerComponentsHolder);
             }
             
-            return new MovementStateMachine(_states.Values.ToList(), _transitions, _initialState);
+            return new MovementStateMachine(_transitions, _initialState);
         }
     }
 }

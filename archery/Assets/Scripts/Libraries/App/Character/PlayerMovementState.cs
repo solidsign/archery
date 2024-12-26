@@ -4,11 +4,11 @@ namespace Game.Libraries.App.Character.Movement.StateMachine
 {
     public abstract class PlayerMovementState : IMovementState
     {
-        protected PlayerComponentsHolder PlayerComponentsHolder { get; private set; }
+        protected PlayerComponentsHolder Components { get; private set; }
 
         public void Initialize(IPlayerComponentsHolder playerComponentsHolder)
         {
-            PlayerComponentsHolder = (PlayerComponentsHolder)playerComponentsHolder;
+            Components = (PlayerComponentsHolder)playerComponentsHolder;
         }
 
         public virtual void Update() { }

@@ -4,7 +4,9 @@ namespace Game.Libraries.App.Character
 {
     public interface IMovementInputController
     {
-        Vector2 NormalizedMovement { get; }
+        Vector3 NormalizedLookDirection { get; }
+        float NormalizedForwardMovement { get; }
+        float NormalizedRightMovement { get; }
         KeyState Jump { get; }
         KeyState Slide { get; }
     }

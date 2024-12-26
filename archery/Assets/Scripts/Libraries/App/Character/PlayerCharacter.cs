@@ -1,10 +1,8 @@
-using System;
-using MyLibs.Core;
 using MyLibs.Movement;
 
 namespace Game.Libraries.App.Character
 {
-    public class PlayerCharacter : IUpdatable
+    public class PlayerCharacter
     {
         public App App { get; }
         public PlayerComponentsHolder Components { get; }
@@ -19,7 +17,10 @@ namespace Game.Libraries.App.Character
         
         public void Update()
         {
-            
+            Components.Input.Update();
+            Components.Collisions.Update();
+            MovementStateMachine.Update();
+            Components.Properties.Update();
         }
     }
 }
