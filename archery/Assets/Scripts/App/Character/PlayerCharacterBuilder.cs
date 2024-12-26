@@ -1,3 +1,4 @@
+using Game.Libraries.App.Character.Movement.StateMachine;
 using MyLibs.Movement;
 
 namespace Game.Libraries.App.Character
@@ -35,4 +36,161 @@ namespace Game.Libraries.App.Character
             return new PlayerCharacter(_playerComponentsHolder, movementStateMachine);
         }
     }
+
+
+    public class SlidePlayerMovementState : PlayerMovementState
+    {
+    }
+    
+    public class CrouchPlayerMovementState : PlayerMovementState
+    {
+    }
+
+    public class InertialRunPlayerMovementState : PlayerMovementState
+    {
+    }
+    
+    public class GroundedToJumpPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public class GroundedSpeedToSlidePlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class GroundedToCrouchPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class InAirToInertialRunPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class InAirToSlidePlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class InAirToCrouchPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class InAirToRunPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class InAirToStandPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class StandToRunPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    public class AnyToInAirPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority { get; }
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    
+    
 }
