@@ -1,0 +1,19 @@
+{
+    "name": "App.Character",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f458353ac0ef4339990802f43a66d11c",
+        "GUID:4c04c35fa49b4316acbc0e35f23e953a",
+        "GUID:43dbef8986974455b0b14ecfe64883d6",
+        "GUID:ae9be5ad8f4fea54cb89b3e70d3d8d62"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
