@@ -1,4 +1,5 @@
 using Game.Libraries.App.Character.Movement.StateMachine;
+using MyLibs.Core;
 using MyLibs.Movement;
 using UnityEngine;
 
@@ -196,15 +197,22 @@ namespace Game.Libraries.App.Character
     
     public class StandToRunPlayerMovementTransition : PlayerMovementStateTransition
     {
-        public override int Priority { get; }
+        public override int Priority => CommonPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            throw new System.NotImplementedException();
+            if (currentState is StandPlayerMovementState is false) return false;
+            
+            var mainCollision = Components.Collisions.GetCurrentMainCollision();
+            if (mainCollision.HasValue is false) return false;
+            
+            var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
+            
+            return standingAngle < Components.Config.MaxStandAngle &&
+                   (Components.Input.NormalizedRightMovement.Abs() > 0f ||
+                    Components.Input.NormalizedForwardMovement.Abs() > 0f);
         }
-
         protected override void PerformTransitionInternal()
         {
-            throw new System.NotImplementedException();
         }
     }
     
@@ -232,8 +240,8 @@ namespace Game.Libraries.App.Character
             
             if (Components.Input.Slide.IsPressed) return false;
             if (Components.Input.Jump.IsDown) return false;
-            if (Components.Input.NormalizedForwardMovement > 0f) return false;
-            if (Components.Input.NormalizedRightMovement > 0f) return false;
+            if (Components.Input.NormalizedForwardMovement.Abs() > 0f) return false;
+            if (Components.Input.NormalizedRightMovement.Abs() > 0f) return false;
 
             var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
             return standingAngle < Components.Config.MaxStandAngle;
