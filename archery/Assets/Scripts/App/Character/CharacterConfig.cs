@@ -5,6 +5,9 @@ namespace Game.Libraries.App.Character
     [CreateAssetMenu(fileName = "characterConfig", menuName = "Configs/Character", order = 0)]
     public class CharacterConfig : ScriptableObject
     {
+        [Header("Stand")]
+        [field: SerializeField] public float MaxStandAngle { get; private set; }
+        
         [Header("Run")]
         [field: SerializeField] public float RunSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }

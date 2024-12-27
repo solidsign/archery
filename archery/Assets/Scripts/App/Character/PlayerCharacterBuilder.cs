@@ -1,5 +1,6 @@
 using Game.Libraries.App.Character.Movement.StateMachine;
 using MyLibs.Movement;
+using UnityEngine;
 
 namespace Game.Libraries.App.Character
 {
@@ -22,13 +23,14 @@ namespace Game.Libraries.App.Character
                 .AddState(new SlidePlayerMovementState())
                 .AddState(new InertialRunPlayerMovementState())
                 .AddState(new CrouchPlayerMovementState())
-                .AddState(new WallRunVerticalPlayerMovementState())
-                .AddState(new WallRunHorizontalPlayerMovementState())
-                .AddState(new InertialWallRunVerticalPlayerMovementState())
-                .AddState(new InertialWallRunHorizontalPlayerMovementState())
-                .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
+                // .AddState(new WallRunVerticalPlayerMovementState())
+                // .AddState(new WallRunHorizontalPlayerMovementState())
+                // .AddState(new InertialWallRunVerticalPlayerMovementState())
+                // .AddState(new InertialWallRunHorizontalPlayerMovementState())
+                .AddTransition<StandPlayerMovementState>(new GroundedToStandPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new StandToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new AnyToInAirPlayerMovementTransition())
+                .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new InAirToRunPlayerMovementTransition())
                 .AddTransition<StandPlayerMovementState>(new InAirToStandPlayerMovementTransition())
                 .AddTransition<SlidePlayerMovementState>(new GroundedSpeedToSlidePlayerMovementTransition())
@@ -220,5 +222,26 @@ namespace Game.Libraries.App.Character
         }
     }
     
+    public class GroundedToStandPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority => LowestPriority;
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            var mainCollision = Components.Collisions.GetCurrentMainCollision();
+            if (mainCollision.HasValue is false) return false;
+            
+            if (Components.Input.Slide.IsPressed) return false;
+            if (Components.Input.Jump.IsDown) return false;
+            if (Components.Input.NormalizedForwardMovement > 0f) return false;
+            if (Components.Input.NormalizedRightMovement > 0f) return false;
+
+            var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
+            return standingAngle < Components.Config.MaxStandAngle;
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+        }
+    }
     
 }

@@ -18,11 +18,17 @@ namespace Game.Libraries.App.Character.Movement.StateMachine
 
     public abstract class PlayerMovementStateTransition : MovementStateTransition
     {
-        protected PlayerComponentsHolder PlayerComponentsHolder { get; private set; }
+        protected const int TopPriority = 100; 
+        protected const int HighPriority = 50; 
+        protected const int CommonPriority = 0; 
+        protected const int LowPriority = -50; 
+        protected const int LowestPriority = -100; 
+        
+        protected PlayerComponentsHolder Components { get; private set; }
 
         public sealed override void Initialize(IPlayerComponentsHolder playerComponentsHolder)
         {
-            PlayerComponentsHolder = (PlayerComponentsHolder)playerComponentsHolder;
+            Components = (PlayerComponentsHolder)playerComponentsHolder;
         }
     }
 }
