@@ -10,14 +10,14 @@ namespace Game.Libraries.App.Character
         {
             base.OnEnter();
             Components.Animation.SetState(PlayerAnimationState.InertialRun);
-            _surface = Components.Collisions.GetCurrentMainCollision().Value;
+            _surface = Components.Collisions.GetCurrentMainStickyCollision().Value;
         }
         
         public override void Update()
         {
             base.Update();
             
-            var surface = Components.Collisions.GetCurrentMainCollision();
+            var surface = Components.Collisions.GetCurrentMainStickyCollision();
             if (surface.HasValue) _surface = surface.Value;
             var moveDirection = Components.GetNormalizedInputMoveDirection(_surface.SurfaceNormal);
             var velocity = moveDirection * Components.Config.CrouchSpeed;

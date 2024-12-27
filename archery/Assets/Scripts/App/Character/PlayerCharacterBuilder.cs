@@ -202,7 +202,7 @@ namespace Game.Libraries.App.Character
         {
             if (currentState is StandPlayerMovementState is false) return false;
             
-            var mainCollision = Components.Collisions.GetCurrentMainCollision();
+            var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
             var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
@@ -218,15 +218,14 @@ namespace Game.Libraries.App.Character
     
     public class AnyToInAirPlayerMovementTransition : PlayerMovementStateTransition
     {
-        public override int Priority { get; }
+        public override int Priority => LowestPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            throw new System.NotImplementedException();
+            return Components.Collisions.GetCurrentMainStickyCollision().HasValue is false;
         }
 
         protected override void PerformTransitionInternal()
         {
-            throw new System.NotImplementedException();
         }
     }
     
@@ -235,7 +234,7 @@ namespace Game.Libraries.App.Character
         public override int Priority => LowestPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            var mainCollision = Components.Collisions.GetCurrentMainCollision();
+            var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
             if (Components.Input.Slide.IsPressed) return false;

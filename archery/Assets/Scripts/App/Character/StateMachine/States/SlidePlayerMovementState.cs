@@ -11,14 +11,14 @@ namespace Game.Libraries.App.Character
         {
             base.OnEnter();
             Components.Animation.SetState(PlayerAnimationState.Slide);
-            _slideSurface = Components.Collisions.GetCurrentMainCollision().Value;
+            _slideSurface = Components.Collisions.GetCurrentMainStickyCollision().Value;
         }
 
         public override void Update()
         {
             base.Update();
             
-            var slideSurface = Components.Collisions.GetCurrentMainCollision();
+            var slideSurface = Components.Collisions.GetCurrentMainStickyCollision();
             if (slideSurface.HasValue) _slideSurface = slideSurface.Value;
             var slideVelocity = Vector3.ProjectOnPlane(Components.Properties.Velocity, _slideSurface.SurfaceNormal) * _slideSurface.SlideAccelerationCoef;
             

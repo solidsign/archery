@@ -3,7 +3,7 @@ namespace Game.Libraries.App.Character
     public interface ICollisionsProvider
     {
         SurfaceCollision[] GetCollisions();
-        SurfaceCollision? GetCurrentMainCollision();
+        SurfaceCollision? GetCurrentMainStickyCollision();
         void Update();
     }
 }
