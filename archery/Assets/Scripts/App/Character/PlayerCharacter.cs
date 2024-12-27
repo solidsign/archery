@@ -18,8 +18,8 @@ namespace Game.Libraries.App.Character
             Components.Input.Update();
             Components.Collisions.Update();
             MovementStateMachine.Update();
+            Components.Movement.Jobs.Update();
             Components.Properties.Update();
-            Components.Jobs.Update();
         }
     }
 }

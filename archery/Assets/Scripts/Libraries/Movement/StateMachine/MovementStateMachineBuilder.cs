@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyLibs.Movement
 {
@@ -14,7 +15,7 @@ namespace MyLibs.Movement
     {
         private readonly IPlayerComponentsHolder _playerComponentsHolder;
         private readonly Dictionary<Type, IMovementState> _states = new();
-        private readonly List<IMovementStateTransition> _transitions = new();
+        private readonly Dictionary<Type /*toState*/, IMovementStateTransition> _transitions = new();
         private IMovementState _initialState;
 
         public MovementStateMachineBuilder(IPlayerComponentsHolder playerComponentsHolder)
@@ -37,7 +38,7 @@ namespace MyLibs.Movement
         public MovementStateMachineBuilder AddTransition<TToState>(IMovementStateTransition transition) where TToState : IMovementState
         {
             transition.InitializeNextState(_states[typeof(TToState)]);
-            _transitions.Add(transition);
+            _transitions.Add(typeof(TToState), transition);
             return this;
         }
         
@@ -51,13 +52,18 @@ namespace MyLibs.Movement
             {
                 movementState.Initialize(_playerComponentsHolder);
             }
-            
-            foreach (var transition in _transitions)
+
+            var statesWithoutTransitions = new HashSet<Type>(_states.Keys);
+            foreach (var (toStateOfType, transition) in _transitions)
             {
                 transition.Initialize(_playerComponentsHolder);
+                statesWithoutTransitions.Remove(toStateOfType);
             }
+
+            if (statesWithoutTransitions.Count > 0) throw new Exception($"States without transitions: {string.Join(", ", statesWithoutTransitions)}");
+
             
-            return new MovementStateMachine(_transitions, _initialState);
+            return new MovementStateMachine(_transitions.Values.ToArray(), _initialState);
         }
     }
 }

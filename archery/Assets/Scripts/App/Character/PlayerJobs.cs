@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Game.Libraries.App.Character
 {
-    public class PlayerJobs
+    public class PlayerJobs<TJobType> where TJobType : IPlayerJob
     {
-        private readonly List<IPlayerJob> _jobs = new();
+        private readonly List<TJobType> _jobs = new();
         
-        public void Add(IPlayerJob job)
+        public void Add(TJobType job)
         {
             _jobs.Add(job);
         }

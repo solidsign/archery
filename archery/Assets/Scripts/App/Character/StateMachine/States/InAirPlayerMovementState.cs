@@ -13,6 +13,7 @@ namespace Game.Libraries.App.Character
         {
             base.OnEnter();
             _startVelocity = Components.Properties.Velocity;
+            _inAirTime = 0f;
         }
 
         public override void Update()
@@ -26,7 +27,7 @@ namespace Game.Libraries.App.Character
 
         private void ApplyFalling()
         {
-            if (Components.Jobs.HasJob<JumpPlayerMovementState.Job>())
+            if (Components.Movement.Jobs.HasJob<JumpPlayerMovementState.Job>())
             {
                 _inAirTime = 0f;
                 return;

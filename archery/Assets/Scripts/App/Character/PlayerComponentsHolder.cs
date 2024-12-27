@@ -12,14 +12,14 @@ namespace Game.Libraries.App.Character
         public IPlayerCharacterAnimationController Animation { get; }
         public ICollisionsProvider Collisions { get; }
         public CharacterConfig Config { get; }
-        public PlayerJobs Jobs { get; }
-        
-        
-        public Vector3 GetNormalizedInputMoveDirection()
+
+
+        public Vector3 GetNormalizedInputMoveDirection() => GetNormalizedInputMoveDirection(Vector3.up); 
+        public Vector3 GetNormalizedInputMoveDirection(Vector3 planeNormal)
         {
             var look = Input.NormalizedLookDirection;
-            var forward = Vector3.ProjectOnPlane(look, Vector3.up).normalized;
-            var right = Vector3.Cross(Vector3.up, forward);
+            var forward = Vector3.ProjectOnPlane(look, planeNormal).normalized;
+            var right = Vector3.Cross(forward, planeNormal).normalized;
             var moveDirection = (forward * Input.NormalizedForwardMovement + right * Input.NormalizedRightMovement).normalized;
             return moveDirection;
         }

@@ -22,6 +22,10 @@ namespace Game.Libraries.App.Character
                 .AddState(new SlidePlayerMovementState())
                 .AddState(new InertialRunPlayerMovementState())
                 .AddState(new CrouchPlayerMovementState())
+                .AddState(new WallRunVerticalPlayerMovementState())
+                .AddState(new WallRunHorizontalPlayerMovementState())
+                .AddState(new InertialWallRunVerticalPlayerMovementState())
+                .AddState(new InertialWallRunHorizontalPlayerMovementState())
                 .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new StandToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new AnyToInAirPlayerMovementTransition())
@@ -38,16 +42,40 @@ namespace Game.Libraries.App.Character
     }
 
 
-    public class SlidePlayerMovementState : PlayerMovementState
+    public class WallRunVerticalPlayerMovementState : PlayerMovementState
     {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.WallRunVertical);
+        }
     }
     
-    public class CrouchPlayerMovementState : PlayerMovementState
+    public class WallRunHorizontalPlayerMovementState : PlayerMovementState
     {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.WallRunHorizontal);
+        }
     }
-
-    public class InertialRunPlayerMovementState : PlayerMovementState
+    
+    public class InertialWallRunVerticalPlayerMovementState : PlayerMovementState
     {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.InertialWallRunVertical);
+        }
+    }
+    
+    public class InertialWallRunHorizontalPlayerMovementState : PlayerMovementState
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.InertialWallRunHorizontal);
+        }
     }
     
     public class GroundedToJumpPlayerMovementTransition : PlayerMovementStateTransition

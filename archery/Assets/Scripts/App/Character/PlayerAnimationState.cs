@@ -3,6 +3,13 @@ namespace Game.Libraries.App.Character
     public enum PlayerAnimationState
     {
         Stand,
-        Run
+        Run,
+        Slide,
+        Crouch,
+        InertialRun,
+        WallRunVertical,
+        WallRunHorizontal,
+        InertialWallRunVertical,
+        InertialWallRunHorizontal
     }
 }

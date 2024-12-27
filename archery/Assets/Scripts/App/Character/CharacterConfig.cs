@@ -7,6 +7,7 @@ namespace Game.Libraries.App.Character
     {
         [Header("Run")]
         [field: SerializeField] public float RunSpeed { get; private set; }
+        [field: SerializeField] public float CrouchSpeed { get; private set; }
         
         [Header("Jump")]
         [field: SerializeField] public AnimationCurve JumpCurve { get; private set; }

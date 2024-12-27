@@ -9,7 +9,7 @@ namespace Game.Libraries.App.Character
         {
             base.OnEnter();
             ApplyPreservedSpeed();
-            Components.Jobs.Add(new Job(Components));
+            Components.Movement.Jobs.Add(new Job(Components));
         }
         
         private void ApplyPreservedSpeed()
@@ -17,7 +17,7 @@ namespace Game.Libraries.App.Character
             Components.Movement.Move(Components.Properties.Velocity * Components.App.Time.DeltaTime);
         }
         
-        public class Job : IPlayerJob
+        public class Job : IPlayerMovementJob
         {
             private readonly PlayerComponentsHolder _components;
             
