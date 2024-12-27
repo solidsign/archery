@@ -21,23 +21,21 @@ namespace Game.Libraries.App.Character
                 .AddState(new RunPlayerMovementState())
                 .AddState(new JumpPlayerMovementState())
                 .AddState(new InAirPlayerMovementState())
-                .AddState(new SlidePlayerMovementState())
-                .AddState(new InertialRunPlayerMovementState())
-                .AddState(new CrouchPlayerMovementState())
+                // .AddState(new SlidePlayerMovementState())
+                // .AddState(new InertialRunPlayerMovementState())
+                // .AddState(new CrouchPlayerMovementState())
                 // .AddState(new WallRunVerticalPlayerMovementState())
                 // .AddState(new WallRunHorizontalPlayerMovementState())
                 // .AddState(new InertialWallRunVerticalPlayerMovementState())
                 // .AddState(new InertialWallRunHorizontalPlayerMovementState())
-                .AddTransition<StandPlayerMovementState>(new GroundedToStandPlayerMovementTransition())
-                .AddTransition<RunPlayerMovementState>(new StandToRunPlayerMovementTransition())
+                .AddTransition<StandPlayerMovementState>(new AnyToStandPlayerMovementTransition())
+                .AddTransition<RunPlayerMovementState>(new AnyToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new AnyToInAirPlayerMovementTransition())
                 .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
-                .AddTransition<RunPlayerMovementState>(new InAirToRunPlayerMovementTransition())
-                .AddTransition<StandPlayerMovementState>(new InAirToStandPlayerMovementTransition())
-                .AddTransition<SlidePlayerMovementState>(new GroundedSpeedToSlidePlayerMovementTransition())
-                .AddTransition<InertialRunPlayerMovementState>(new InAirToInertialRunPlayerMovementTransition())
-                .AddTransition<SlidePlayerMovementState>(new InAirToSlidePlayerMovementTransition())
-                .AddTransition<CrouchPlayerMovementState>(new GroundedToCrouchPlayerMovementTransition())
+                // .AddTransition<SlidePlayerMovementState>(new GroundedSpeedToSlidePlayerMovementTransition())
+                // .AddTransition<InertialRunPlayerMovementState>(new InAirToInertialRunPlayerMovementTransition())
+                // .AddTransition<SlidePlayerMovementState>(new InAirToSlidePlayerMovementTransition())
+                // .AddTransition<CrouchPlayerMovementState>(new GroundedToCrouchPlayerMovementTransition())
                 .Build();
 
             return new PlayerCharacter(_playerComponentsHolder, movementStateMachine);
@@ -83,15 +81,19 @@ namespace Game.Libraries.App.Character
     
     public class GroundedToJumpPlayerMovementTransition : PlayerMovementStateTransition
     {
-        public override int Priority { get; }
+        public override int Priority => HighPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            throw new System.NotImplementedException();
+            var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
+            if (mainCollision.HasValue is false) return false;
+            
+            var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
+            
+            return standingAngle < Components.Config.MaxStandAngle && Components.Input.Jump.IsDown;
         }
 
         protected override void PerformTransitionInternal()
         {
-            throw new System.NotImplementedException();
         }
     }
 
@@ -195,13 +197,11 @@ namespace Game.Libraries.App.Character
         }
     }
     
-    public class StandToRunPlayerMovementTransition : PlayerMovementStateTransition
+    public class AnyToRunPlayerMovementTransition : PlayerMovementStateTransition
     {
         public override int Priority => CommonPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            if (currentState is StandPlayerMovementState is false) return false;
-            
             var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
@@ -229,7 +229,7 @@ namespace Game.Libraries.App.Character
         }
     }
     
-    public class GroundedToStandPlayerMovementTransition : PlayerMovementStateTransition
+    public class AnyToStandPlayerMovementTransition : PlayerMovementStateTransition
     {
         public override int Priority => LowestPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
