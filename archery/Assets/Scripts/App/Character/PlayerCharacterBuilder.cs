@@ -1,22 +1,34 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
+using Archery.Core;
 using MyLibs.Core;
 using MyLibs.Movement;
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class PlayerCharacterBuilder
     {
-        private readonly PlayerComponentsHolder _playerComponentsHolder;
+        private readonly PlayerReferences _playerReferences;
+        private readonly Services _services;
 
-        public PlayerCharacterBuilder(PlayerComponentsHolder playerComponentsHolder)
+        public PlayerCharacterBuilder(PlayerReferences playerReferences, Services services)
         {
-            _playerComponentsHolder = playerComponentsHolder;
+            _playerReferences = playerReferences;
+            _services = services;
         }
-        
+
         public PlayerCharacter Build()
         {
-            var movementStateMachine = new MovementStateMachineBuilder(_playerComponentsHolder)
+            var playerComponentsHolder = new PlayerComponentsHolder(
+                services: _services,
+                properties: null,
+                input: null,
+                movement: null,
+                animation: null,
+                collisions: null,
+                config: null);
+            
+            var movementStateMachine = new MovementStateMachineBuilder(playerComponentsHolder)
                 .AddInitialState(new StandPlayerMovementState())
                 .AddState(new RunPlayerMovementState())
                 .AddState(new JumpPlayerMovementState())
@@ -38,7 +50,7 @@ namespace App.Character
                 // .AddTransition<CrouchPlayerMovementState>(new GroundedToCrouchPlayerMovementTransition())
                 .Build();
 
-            return new PlayerCharacter(_playerComponentsHolder, movementStateMachine);
+            return new PlayerCharacter(playerComponentsHolder, movementStateMachine);
         }
     }
 

@@ -1,6 +1,6 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class CrouchPlayerMovementState : PlayerMovementState
     {
@@ -16,7 +16,7 @@ namespace App.Character
             
             var moveDirection = Components.GetNormalizedInputMoveDirection();
             var velocity = moveDirection * Components.Config.CrouchSpeed;
-            var moveDelta = velocity * Components.App.Time.DeltaTime;
+            var moveDelta = velocity * Components.Services.Time.DeltaTime;
             
             Components.Movement.Move(moveDelta);
         }

@@ -1,8 +1,8 @@
 using MyLibs.Core;
 
-namespace App.Core
+namespace Archery.Core
 {
-    public class App
+    public class Services
     {
         public ITimeProvider Time { get; } = new UnityTimeProvider();
     }

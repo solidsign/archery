@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public readonly struct SurfaceCollision
     {

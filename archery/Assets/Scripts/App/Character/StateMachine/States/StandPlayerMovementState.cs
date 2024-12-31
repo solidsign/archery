@@ -1,6 +1,6 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class StandPlayerMovementState : PlayerMovementState
     {

@@ -1,4 +1,4 @@
-namespace App.Character
+namespace Archery.Character
 {
     public interface IPlayerMovementJob : IPlayerJob {}
     public interface IPlayerJob

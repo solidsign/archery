@@ -1,11 +1,30 @@
+using Archery.Core;
 using MyLibs.Movement;
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class PlayerComponentsHolder : IPlayerComponentsHolder
     {
-        public global::App.Core.App App { get; }
+        public PlayerComponentsHolder(
+            Services services, 
+            IPhysicalObjectProperties properties, 
+            IInputController input, 
+            IMovementController movement, 
+            IPlayerCharacterAnimationController animation, 
+            ICollisionsProvider collisions, 
+            CharacterConfig config)
+        {
+            Services = services;
+            Properties = properties;
+            Input = input;
+            Movement = movement;
+            Animation = animation;
+            Collisions = collisions;
+            Config = config;
+        }
+
+        public Services Services { get; }
         public IPhysicalObjectProperties Properties { get; }
         public IInputController Input { get; }
         public IMovementController Movement { get; }

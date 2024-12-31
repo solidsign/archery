@@ -1,6 +1,6 @@
 using MyLibs.Movement;
 
-namespace App.Character.Movement.StateMachine
+namespace Archery.Character.Movement.StateMachine
 {
     public abstract class PlayerMovementState : IMovementState
     {

@@ -1,8 +1,8 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 using MyLibs.Movement;
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class InAirPlayerMovementState : PlayerMovementState
     {
@@ -33,23 +33,23 @@ namespace App.Character
                 return;
             }
             
-            _inAirTime += Components.App.Time.DeltaTime;
+            _inAirTime += Components.Services.Time.DeltaTime;
             _inAirTime = Mathf.Clamp(_inAirTime, 0f, Components.Config.MaxFallingTime);
             
             var fallingVelocity = Components.Config.FallingVelocityCurve.Evaluate(_inAirTime) * Components.Config.MaxFallingVelocity;
-            Components.Movement.Move(Vector3.down * fallingVelocity * Components.App.Time.DeltaTime);
+            Components.Movement.Move(Vector3.down * fallingVelocity * Components.Services.Time.DeltaTime);
         }
 
         private void ApplyPreservedSpeed()
         {
-            Components.Movement.Move(_startVelocity * Components.App.Time.DeltaTime);
+            Components.Movement.Move(_startVelocity * Components.Services.Time.DeltaTime);
         }
 
         private void ApplyInputMovement()
         {
             var moveDirection = Components.GetNormalizedInputMoveDirection();
             var velocity = moveDirection * Components.Config.InAirRunSpeed;
-            var moveDelta = velocity * Components.App.Time.DeltaTime;
+            var moveDelta = velocity * Components.Services.Time.DeltaTime;
             
             Components.Movement.Move(moveDelta);
         }

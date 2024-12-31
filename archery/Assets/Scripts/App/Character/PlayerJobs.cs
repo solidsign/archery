@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class PlayerJobs<TJobType> where TJobType : IPlayerJob
     {

@@ -1,7 +1,7 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class SlidePlayerMovementState : PlayerMovementState
     {
@@ -22,7 +22,7 @@ namespace App.Character
             if (slideSurface.HasValue) _slideSurface = slideSurface.Value;
             var slideVelocity = Vector3.ProjectOnPlane(Components.Properties.Velocity, _slideSurface.SurfaceNormal) * _slideSurface.SlideAccelerationCoef;
             
-            Components.Movement.Move(slideVelocity * Components.App.Time.DeltaTime);
+            Components.Movement.Move(slideVelocity * Components.Services.Time.DeltaTime);
         }
     }
 }

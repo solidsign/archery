@@ -1,7 +1,7 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class JumpPlayerMovementState : PlayerMovementState
     {
@@ -14,7 +14,7 @@ namespace App.Character
         
         private void ApplyPreservedSpeed()
         {
-            Components.Movement.Move(Components.Properties.Velocity * Components.App.Time.DeltaTime);
+            Components.Movement.Move(Components.Properties.Velocity * Components.Services.Time.DeltaTime);
         }
         
         public class Job : IPlayerMovementJob
@@ -33,7 +33,7 @@ namespace App.Character
             public bool IsDone { get; private set; } = false;
             public void Update()
             {
-                var newJumpTime = Mathf.Clamp(_currentJumpTime + _components.App.Time.DeltaTime, 0f, Config.MaxJumpTime);
+                var newJumpTime = Mathf.Clamp(_currentJumpTime + _components.Services.Time.DeltaTime, 0f, Config.MaxJumpTime);
                 var normalizedHeightDelta = Config.JumpCurve.Evaluate(newJumpTime) - Config.JumpCurve.Evaluate(_currentJumpTime);
                 _components.Movement.Move(Vector3.up * normalizedHeightDelta * Config.MaxJumpHeight);
                 _currentJumpTime = newJumpTime;

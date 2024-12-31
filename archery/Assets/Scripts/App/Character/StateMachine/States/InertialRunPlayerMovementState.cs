@@ -1,6 +1,6 @@
-using App.Character.Movement.StateMachine;
+using Archery.Character.Movement.StateMachine;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class InertialRunPlayerMovementState : PlayerMovementState
     {
@@ -21,7 +21,7 @@ namespace App.Character
             if (surface.HasValue) _surface = surface.Value;
             var moveDirection = Components.GetNormalizedInputMoveDirection(_surface.SurfaceNormal);
             var velocity = moveDirection * Components.Config.CrouchSpeed;
-            var moveDelta = velocity * Components.App.Time.DeltaTime;
+            var moveDelta = velocity * Components.Services.Time.DeltaTime;
             
             Components.Movement.Move(moveDelta);
         }

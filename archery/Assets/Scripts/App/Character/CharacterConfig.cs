@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Character
+namespace Archery.Character
 {
     [CreateAssetMenu(fileName = "characterConfig", menuName = "Configs/Character", order = 0)]
     public class CharacterConfig : ScriptableObject

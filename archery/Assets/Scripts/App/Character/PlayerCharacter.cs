@@ -1,6 +1,6 @@
 using MyLibs.Movement;
 
-namespace App.Character
+namespace Archery.Character
 {
     public class PlayerCharacter
     {
