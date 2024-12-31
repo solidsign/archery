@@ -1,11 +1,11 @@
 using MyLibs.Movement;
 using UnityEngine;
 
-namespace Game.Libraries.App.Character
+namespace App.Character
 {
     public class PlayerComponentsHolder : IPlayerComponentsHolder
     {
-        public App App { get; }
+        public global::App.Core.App App { get; }
         public IPhysicalObjectProperties Properties { get; }
         public IInputController Input { get; }
         public IMovementController Movement { get; }

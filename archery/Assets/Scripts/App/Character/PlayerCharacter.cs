@@ -1,6 +1,6 @@
 using MyLibs.Movement;
 
-namespace Game.Libraries.App.Character
+namespace App.Character
 {
     public class PlayerCharacter
     {

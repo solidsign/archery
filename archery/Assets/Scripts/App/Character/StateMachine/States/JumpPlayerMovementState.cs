@@ -1,7 +1,7 @@
-using Game.Libraries.App.Character.Movement.StateMachine;
+using App.Character.Movement.StateMachine;
 using UnityEngine;
 
-namespace Game.Libraries.App.Character
+namespace App.Character
 {
     public class JumpPlayerMovementState : PlayerMovementState
     {

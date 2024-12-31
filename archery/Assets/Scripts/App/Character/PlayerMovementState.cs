@@ -1,6 +1,6 @@
 using MyLibs.Movement;
 
-namespace Game.Libraries.App.Character.Movement.StateMachine
+namespace App.Character.Movement.StateMachine
 {
     public abstract class PlayerMovementState : IMovementState
     {

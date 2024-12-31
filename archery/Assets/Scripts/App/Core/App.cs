@@ -1,6 +1,6 @@
 using MyLibs.Core;
 
-namespace Game.Libraries.App
+namespace App.Core
 {
     public class App
     {

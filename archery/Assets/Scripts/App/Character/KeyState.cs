@@ -1,4 +1,4 @@
-namespace Game.Libraries.App.Character
+namespace App.Character
 {
     public struct KeyState
     {
