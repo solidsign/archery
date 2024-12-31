@@ -1,0 +1,17 @@
+{
+    "name": "App.GameManager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4c04c35fa49b4316acbc0e35f23e953a",
+        "GUID:0430747e5e204881844344a6f4fc131e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
