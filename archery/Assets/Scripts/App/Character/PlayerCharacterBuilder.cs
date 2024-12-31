@@ -21,12 +21,12 @@ namespace Archery.Character
         {
             var playerComponentsHolder = new PlayerComponentsHolder(
                 services: _services,
-                properties: null,
-                input: null,
+                properties: new PhysicalObjectProperties(_playerReferences.MainTransform, _services.Time),
+                input: new SimpleInputController(_playerReferences),
                 movement: null,
                 animation: null,
                 collisions: null,
-                config: null);
+                config: _playerReferences.Config);
             
             var movementStateMachine = new MovementStateMachineBuilder(playerComponentsHolder)
                 .AddInitialState(new StandPlayerMovementState())

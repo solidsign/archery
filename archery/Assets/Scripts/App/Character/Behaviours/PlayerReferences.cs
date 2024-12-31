@@ -7,5 +7,7 @@ namespace Archery.Character
     public class PlayerReferences
     {
         [field: SerializeField] public Transform LookCameraTransform { get; private set; }
+        [field: SerializeField] public Transform MainTransform { get; private set; }
+        [field: SerializeField] public CharacterConfig Config { get; private set; }
     }
 }
