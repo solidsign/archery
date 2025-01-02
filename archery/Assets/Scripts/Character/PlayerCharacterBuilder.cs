@@ -24,8 +24,8 @@ namespace Archery.Character
                 properties: new PhysicalObjectProperties(_playerReferences.MainTransform, _services.Time).Initialize(),
                 input: new SimpleInputController(_playerReferences),
                 movement: new MovementController(_playerReferences.CharacterController),
-                animation: null,
-                collisions: null,
+                animation: new StubAnimationController(),
+                collisions: _playerReferences.Collisions,
                 config: _playerReferences.Config);
             
             var movementStateMachine = new MovementStateMachineBuilder(playerComponentsHolder)
@@ -51,6 +51,14 @@ namespace Archery.Character
                 .Build();
 
             return new PlayerCharacter(playerComponentsHolder, movementStateMachine);
+        }
+    }
+
+    public class StubAnimationController : IPlayerCharacterAnimationController
+    {
+        public void SetState(PlayerAnimationState state)
+        {
+            
         }
     }
 

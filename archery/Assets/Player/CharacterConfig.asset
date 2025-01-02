@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
   <MaxStandAngle>k__BackingField: 45
-  <RunSpeed>k__BackingField: 5
-  <CrouchSpeed>k__BackingField: 4
+  <RunSpeed>k__BackingField: 0.1
+  <CrouchSpeed>k__BackingField: 0.1
   <JumpCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <MaxJumpHeight>k__BackingField: 4
+  <MaxJumpHeight>k__BackingField: 2
   <MaxJumpTime>k__BackingField: 1
   <MinJumpTime>k__BackingField: 0.2
   <FallingVelocityCurve>k__BackingField:
@@ -67,5 +67,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <MaxFallingTime>k__BackingField: 10
-  <MaxFallingVelocity>k__BackingField: 50
-  <InAirRunSpeed>k__BackingField: 3
+  <MaxFallingVelocity>k__BackingField: 5
+  <InAirRunSpeed>k__BackingField: 0.1
