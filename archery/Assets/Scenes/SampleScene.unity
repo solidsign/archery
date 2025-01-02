@@ -569,6 +569,7 @@ MonoBehaviour:
     <LookCameraTransform>k__BackingField: {fileID: 330585546}
     <MainTransform>k__BackingField: {fileID: 1594578925}
     <Config>k__BackingField: {fileID: 11400000, guid: 465cf4852140dc744b2b79539b002e0e, type: 2}
+    <CharacterController>k__BackingField: {fileID: 1594578924}
 --- !u!143 &1594578924
 CharacterController:
   m_ObjectHideFlags: 0
