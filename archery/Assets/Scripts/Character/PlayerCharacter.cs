@@ -27,6 +27,9 @@ namespace Archery.Character
             
             // check up properties updates
             Components.Properties.Update();
+            
+            // clean up after update
+            Components.Collisions.Clear();
         }
     }
 }
