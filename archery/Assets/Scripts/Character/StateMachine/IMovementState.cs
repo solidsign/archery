@@ -1,6 +1,7 @@
 namespace Archery.Character.StateMachine
 {
-    public interface IMovementState : IPlayerComponentsHolderDependent
+    public interface IReadOnlyMovementState {}
+    public interface IMovementState : IPlayerComponentsHolderDependent, IReadOnlyMovementState
     {
         void Update();
         void OnExit();

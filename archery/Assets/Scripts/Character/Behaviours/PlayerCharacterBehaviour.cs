@@ -1,3 +1,4 @@
+using System;
 using Archery.Core;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ namespace Archery.Character.Behaviours
         private void Update()
         {
             _playerCharacter.Update();
+        }
+
+        private void OnGUI()
+        {
+            _playerCharacter.DrawAdmGui();
         }
     }
 }

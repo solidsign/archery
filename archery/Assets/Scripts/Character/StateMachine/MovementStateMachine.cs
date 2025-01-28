@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Archery.Character.StateMachine
 {
@@ -9,12 +10,14 @@ namespace Archery.Character.StateMachine
         
         private IMovementState _currentState;
 
+        public IReadOnlyMovementState CurrentState => _currentState;
+
         public MovementStateMachine(IReadOnlyList<IMovementStateTransition> transitions, IMovementState initialState)
         {
             _transitions = transitions;
             _currentState = initialState;
         }
-        
+
         public void Update()
         {
             var possibleTransitions = _transitions.Where(x => x.CanTransitionFrom(_currentState)).ToList();
@@ -26,6 +29,11 @@ namespace Archery.Character.StateMachine
             }
             
             _currentState.Update();
+        }
+
+        public void DrawAdm()
+        {
+            GUILayout.Label($"Current state: {_currentState.GetType().Name}");
         }
     }
 }
