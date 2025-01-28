@@ -24,7 +24,7 @@ namespace Archery.Character.StateMachine
             if (possibleTransitions.Any())
             {
                 _currentState.OnExit();
-                _currentState = possibleTransitions.OrderBy(x => x.Priority).First().PerformTransition();
+                _currentState = possibleTransitions.OrderByDescending(x => x.Priority).First().PerformTransition();
                 _currentState.OnEnter();
             }
             

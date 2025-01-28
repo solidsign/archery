@@ -101,7 +101,7 @@ namespace Archery.Character
     
     public class GroundedToJumpPlayerMovementTransition : PlayerMovementStateTransition
     {
-        public override int Priority => HighPriority;
+        public override int Priority => TopPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
             var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
