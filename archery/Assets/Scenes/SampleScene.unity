@@ -592,6 +592,9 @@ GameObject:
   - component: {fileID: 1594578924}
   - component: {fileID: 1594578923}
   - component: {fileID: 1594578926}
+  - component: {fileID: 1594578929}
+  - component: {fileID: 1594578928}
+  - component: {fileID: 1594578927}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -670,6 +673,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15b78bd249a4c71b671a42ccd1fb38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1594578927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594578922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ddd89ac4784c0db9c4d3f529b14e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: player
+  _drawAlways: 1
+  _radius: 0.5
+  _textOffset: {x: 0, y: 2.6, z: 0}
+  _sphereOffset: {x: 0, y: 0.5, z: 0}
+  _sphereColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &1594578928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594578922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ddd89ac4784c0db9c4d3f529b14e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: 
+  _drawAlways: 1
+  _radius: 0.5
+  _textOffset: {x: 0, y: 0, z: 0}
+  _sphereOffset: {x: 0, y: 1, z: 0}
+  _sphereColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &1594578929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594578922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ddd89ac4784c0db9c4d3f529b14e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: 
+  _drawAlways: 1
+  _radius: 0.5
+  _textOffset: {x: 0, y: 0, z: 0}
+  _sphereOffset: {x: 0, y: 1.5, z: 0}
+  _sphereColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -39,6 +39,7 @@ namespace Archery.Character
         public void Apply()
         {
             _characterController.Move(_currentDelta + Vector3.down * float.Epsilon);
+            _currentDelta = Vector3.zero;
         }
     }
 }

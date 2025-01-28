@@ -6,7 +6,6 @@ namespace Archery.Character
 {
     public class CollisionsProvider : MonoBehaviour, ICollisionsProvider
     {
-        private readonly ContactPoint[] _sharedContactPoints = new ContactPoint[6];
         private readonly List<SurfaceCollision> _currentCollisions = new();
         
         private SurfaceCollision? _cachedMainStickyCollision = null;
@@ -28,33 +27,10 @@ namespace Archery.Character
             _cachedMainStickyCollision = null;
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            var count = other.GetContacts(_sharedContactPoints);
-            for (int i = 0; i < count; i++)
-            {
-                var contact = _sharedContactPoints[i];
-                var surfaceNormal = contact.normal;
-                var collisionPoint = contact.point;
-                var slideAccelerationCoef = 1f;
-                var projectileInfo = contact.otherCollider.CompareTag($"Projectile") ? new ProjectileInfo() : (ProjectileInfo?)null;
-                var surfaceCollision = new SurfaceCollision(surfaceNormal, slideAccelerationCoef, collisionPoint, projectileInfo, CollisionState.Enter);
-                _currentCollisions.Add(surfaceCollision);
-            }
-        }
-        
-        private void OnCollisionStay(Collision other)
-        {
-            var count = other.GetContacts(_sharedContactPoints);
-            for (int i = 0; i < count; i++)
-            {
-                var contact = _sharedContactPoints[i];
-                var surfaceNormal = contact.normal;
-                var collisionPoint = contact.point;
-                var slideAccelerationCoef = 1f;
-                var surfaceCollision = new SurfaceCollision(surfaceNormal, slideAccelerationCoef, collisionPoint, null, CollisionState.Stay);
-                _currentCollisions.Add(surfaceCollision);
-            }
+            // todo: add stickiness rank to surface by tag and handle different slide accelerations
+            _currentCollisions.Add(new SurfaceCollision(hit.normal, 1, hit.point, null));
         }
     }
 }
