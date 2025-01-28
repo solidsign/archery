@@ -23,7 +23,7 @@ namespace Archery.Character
                 services: _services,
                 properties: new PhysicalObjectProperties(_playerReferences.MainTransform, _services.Time).Initialize(),
                 input: new SimpleInputController(_playerReferences),
-                movement: new MovementController(_playerReferences.CharacterController),
+                movement: new MovementController(_playerReferences.CharacterController, _playerReferences.Config),
                 animation: new StubAnimationController(),
                 collisions: _playerReferences.Collisions,
                 config: _playerReferences.Config);

@@ -44,6 +44,7 @@ namespace Archery.Character
         public void Update()
         {
             Velocity = new Velocity((Position - _lastPosition) / _time.DeltaTime);
+            _lastPosition = Position;
         }        
     }
 }

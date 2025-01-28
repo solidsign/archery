@@ -23,21 +23,21 @@ namespace Archery.Character
             MovementStateMachine.Update();
             Components.Movement.Jobs.Update();
             
+            // clean up after update
+            Components.Collisions.Clear();
+            
             // apply movement
             Components.Movement.Apply();
             
             // check up properties updates
             Components.Properties.Update();
-            
-            // clean up after update
-            Components.Collisions.Clear();
         }
 
         public void DrawAdmGui()
         {
-            GUI.skin.label.fontSize = 24;
+            GUI.skin.label.fontSize = 18;
             
-            GUILayout.BeginArea(new Rect(Vector2.zero, Vector2.one * 500f), GUI.skin.box);
+            GUILayout.BeginArea(new Rect(Vector2.zero, Vector2.one * 800f), GUI.skin.box);
 
             GUILayout.BeginVertical();
             
@@ -52,7 +52,11 @@ namespace Archery.Character
             GUILayout.Label($"Properties");
             GUILayout.Label($"Velocity: {Components.Properties.Velocity.Value}");
             GUILayout.Label($"Position: {Components.Properties.Position.Value}");
-            
+            GUILayout.Space(25f);
+            GUILayout.Label($"Collisions");
+            GUILayout.Label($"Collisions count: {Components.Collisions.GetCollisions().Count}");
+            GUILayout.Label("Current Main Sticky: " + Components.Collisions.GetCurrentMainStickyCollision());
+
             GUILayout.EndVertical();
             
             GUILayout.EndArea();

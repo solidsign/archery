@@ -16,6 +16,11 @@ namespace Archery.Character
             CollisionPoint = collisionPoint;
             ProjectileInfo = projectileInfo;
         }
+
+        public override string ToString()
+        {
+            return $"SurfaceNormal: {SurfaceNormal}, SlideAccelerationCoef: {SlideAccelerationCoef}, CollisionPoint: {CollisionPoint}, ProjectileInfo: {ProjectileInfo}";
+        }
     }
 
     public struct ProjectileInfo

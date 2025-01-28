@@ -30,10 +30,5 @@ namespace Archery.Character.StateMachine
             
             _currentState.Update();
         }
-
-        public void DrawAdm()
-        {
-            GUILayout.Label($"Current state: {_currentState.GetType().Name}");
-        }
     }
 }

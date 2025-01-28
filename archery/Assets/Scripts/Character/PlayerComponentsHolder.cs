@@ -38,7 +38,7 @@ namespace Archery.Character
         {
             var look = Input.NormalizedLookDirection;
             var forward = Vector3.ProjectOnPlane(look, planeNormal).normalized;
-            var right = Vector3.Cross(forward, planeNormal).normalized;
+            var right = Vector3.Cross(planeNormal, forward).normalized;
             var moveDirection = (forward * Input.NormalizedForwardMovement + right * Input.NormalizedRightMovement).normalized;
             return moveDirection;
         }
