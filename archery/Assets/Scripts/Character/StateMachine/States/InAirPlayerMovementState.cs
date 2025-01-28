@@ -35,7 +35,7 @@ namespace Archery.Character.StateMachine.States
             _inAirTime += Components.Services.Time.DeltaTime;
             _inAirTime = Mathf.Clamp(_inAirTime, 0f, Components.Config.MaxFallingTime);
             
-            var fallingVelocity = Components.Config.FallingVelocityCurve.Evaluate(_inAirTime) * Components.Config.MaxFallingVelocity;
+            var fallingVelocity = Components.Config.FallingVelocityCurve.Evaluate(_inAirTime / Components.Config.MaxFallingTime) * Components.Config.MaxFallingVelocity;
             Components.Movement.Move(Vector3.down * fallingVelocity * Components.Services.Time.DeltaTime);
         }
 

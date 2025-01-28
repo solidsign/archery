@@ -5,7 +5,7 @@ namespace Archery.Character
     public class PlayerJobs<TJobType> where TJobType : IPlayerJob
     {
         private readonly List<TJobType> _jobs = new();
-        
+
         public void Add(TJobType job)
         {
             _jobs.Add(job);
@@ -20,7 +20,7 @@ namespace Archery.Character
                 playerJob.Update();
             }
 
-            _jobs.RemoveAll(x => x.IsDone is false);
+            _jobs.RemoveAll(x => x.IsDone);
         }
 
         public bool HasJob<T>()

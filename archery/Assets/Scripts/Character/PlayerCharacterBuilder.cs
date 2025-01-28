@@ -241,7 +241,7 @@ namespace Archery.Character
         public override int Priority => LowestPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            return Components.Collisions.GetCurrentMainStickyCollision().HasValue is false;
+            return currentState is not InAirPlayerMovementState && Components.Collisions.GetCurrentMainStickyCollision().HasValue is false;
         }
 
         protected override void PerformTransitionInternal()
