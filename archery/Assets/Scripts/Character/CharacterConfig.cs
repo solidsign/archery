@@ -23,6 +23,6 @@ namespace Archery.Character
         [field: SerializeField] public AnimationCurve FallingVelocityCurve { get; private set; }
         [field: SerializeField] public float MaxFallingTime { get; private set; }
         [field: SerializeField] public float MaxFallingVelocity { get; private set; }
-        [field: SerializeField] public float InAirRunSpeed { get; private set; }
+        [field: SerializeField] public float InAirControlAcceleration { get; private set; }
     }
 }
