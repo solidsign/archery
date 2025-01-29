@@ -1,4 +1,5 @@
 using System.Linq;
+using Archery.Utils;
 using UnityEngine;
 
 namespace Archery.Character.StateMachine.States
@@ -39,8 +40,8 @@ namespace Archery.Character.StateMachine.States
                 _currentJumpTime = newJumpTime;
 
                 var hitTop = _components.Collisions.GetCollisions().Any(x =>
-                    Vector3.Angle(Vector3.up, x.SurfaceNormal) < Config.MaxStopJumpHitSurfaceAngle && 
-                    Vector3.Angle(Vector3.up, x.SurfaceNormal) > Config.MinStopJumpHitSurfaceAngle);
+                    x.SurfaceNormal.GetAngleWithGround() < Config.MaxStopJumpHitSurfaceAngle && 
+                    x.SurfaceNormal.GetAngleWithGround() > Config.MinStopJumpHitSurfaceAngle);
 
                 if (hitTop || _currentJumpTime >= Config.MaxJumpTime || _currentJumpTime >= Config.MinJumpTime && _components.Input.Jump.IsPressed is false)
                 {

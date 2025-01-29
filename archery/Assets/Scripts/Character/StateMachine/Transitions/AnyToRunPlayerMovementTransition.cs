@@ -1,5 +1,4 @@
 using Archery.Utils;
-using UnityEngine;
 
 namespace Archery.Character.StateMachine.Transitions
 {
@@ -11,7 +10,7 @@ namespace Archery.Character.StateMachine.Transitions
             var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
-            var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
+            var standingAngle = mainCollision.Value.SurfaceNormal.GetAngleWithGround();
             
             return standingAngle < Components.Config.MaxStandAngle &&
                    (Components.Input.NormalizedRightMovement.Abs() > 0f ||

@@ -4,6 +4,7 @@ using Archery.Character.Input;
 using Archery.Character.Movement;
 using Archery.Character.StateMachine;
 using Archery.Core;
+using Archery.Utils;
 using UnityEngine;
 
 namespace Archery.Character
@@ -40,8 +41,8 @@ namespace Archery.Character
         public Vector3 GetNormalizedInputMoveDirection()
         {
             var look = Input.NormalizedLookDirection;
-            var forward = Vector3.ProjectOnPlane(look, Vector3.up).normalized;
-            var right = Vector3.Cross(Vector3.up, forward).normalized;
+            var forward = look.ProjectOnGround().normalized;
+            var right = Vector3.Cross(MathConstants.GroundNormal, forward).normalized;
             var moveDirection = (forward * Input.NormalizedForwardMovement + right * Input.NormalizedRightMovement).normalized;
             return moveDirection;
         }

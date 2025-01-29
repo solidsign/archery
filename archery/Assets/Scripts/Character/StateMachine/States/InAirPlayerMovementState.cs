@@ -1,4 +1,5 @@
 using Archery.Core;
+using Archery.Utils;
 using UnityEngine;
 
 namespace Archery.Character.StateMachine.States
@@ -27,9 +28,9 @@ namespace Archery.Character.StateMachine.States
 
         private void CorrectPreservedVelocityToActualVelocity()
         {
-            var horizontalActualVelocity = Vector3.ProjectOnPlane(Components.Properties.Velocity.Value, Vector3.up);
+            var horizontalActualVelocity = Components.Properties.Velocity.Value.ProjectOnGround();
             var verticalActualVelocity = Components.Properties.Velocity.Value - horizontalActualVelocity;
-            var horizontalPreservedVelocity = Vector3.ProjectOnPlane(_preservedVelocity, Vector3.up);
+            var horizontalPreservedVelocity = _preservedVelocity.Value.ProjectOnGround();
             var verticalPreservedVelocity = _preservedVelocity.Value - horizontalPreservedVelocity;
             horizontalPreservedVelocity = Vector3.ClampMagnitude(horizontalPreservedVelocity, horizontalActualVelocity.magnitude);
             verticalPreservedVelocity = Vector3.ClampMagnitude(verticalPreservedVelocity, verticalActualVelocity.magnitude);
@@ -43,7 +44,7 @@ namespace Archery.Character.StateMachine.States
             var acceleration = moveDirection * Components.Config.InAirControlAcceleration;
             var velocityDelta = acceleration / Components.Services.Time.DeltaTime;
 
-            var horizontalPreservedVelocity = Vector3.ProjectOnPlane(_preservedVelocity, Vector3.up);
+            var horizontalPreservedVelocity = _preservedVelocity.Value.ProjectOnGround();
             var verticalPreservedVelocity = _preservedVelocity - horizontalPreservedVelocity;
 
             horizontalPreservedVelocity = Vector3.ClampMagnitude(horizontalPreservedVelocity + velocityDelta, Mathf.Max(horizontalPreservedVelocity.magnitude, Components.Config.RunSpeed));

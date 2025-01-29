@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Archery.Utils;
 using UnityEngine;
 
 namespace Archery.Character.Collisions
@@ -17,7 +18,7 @@ namespace Archery.Character.Collisions
             if (_cachedMainStickyCollision.HasValue) return _cachedMainStickyCollision;
             if (_currentCollisions.Count == 0) return null;
 
-            _cachedMainStickyCollision = _currentCollisions.OrderBy(x => Vector3.Angle(Vector3.up, x.SurfaceNormal)).First();
+            _cachedMainStickyCollision = _currentCollisions.OrderBy(x => x.SurfaceNormal.GetAngleWithGround()).First();
             return _cachedMainStickyCollision;
         }
 

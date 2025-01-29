@@ -68,7 +68,7 @@ namespace Archery.Character
             GUILayout.Label("Current Main Sticky: " + Components.Collisions.GetCurrentMainStickyCollision());
             if (Components.Collisions.GetCurrentMainStickyCollision().HasValue)
             {
-                GUILayout.Label("Current Main Sticky Ground Angle: " + Vector3.Angle(Vector3.up, Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal));
+                GUILayout.Label("Current Main Sticky Ground Angle: " + Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal.GetAngleWithGround());
             }
             GUILayout.Space(25f);
             GUILayout.Label($"Jobs");
