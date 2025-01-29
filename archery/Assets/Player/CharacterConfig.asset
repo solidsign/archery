@@ -78,4 +78,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   <MaxFallingTime>k__BackingField: 50
   <MaxFallingVelocity>k__BackingField: 10000
-  <InAirRunSpeed>k__BackingField: 30
+  <InAirControlAcceleration>k__BackingField: 0.02
