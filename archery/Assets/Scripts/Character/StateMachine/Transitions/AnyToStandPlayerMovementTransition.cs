@@ -1,3 +1,4 @@
+using Archery.Character.StateMachine.States;
 using Archery.Utils;
 
 namespace Archery.Character.StateMachine.Transitions
@@ -7,6 +8,8 @@ namespace Archery.Character.StateMachine.Transitions
         public override int Priority => LowestPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
+            if (currentState is StandPlayerMovementState) return false;
+            
             var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
