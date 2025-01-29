@@ -53,6 +53,8 @@ MonoBehaviour:
   <MaxJumpTime>k__BackingField: 0.2
   <MinJumpTime>k__BackingField: 0.05
   <MaxJumpSurfaceAngle>k__BackingField: 80
+  <MaxStopJumpHitSurfaceAngle>k__BackingField: 190
+  <MinStopJumpHitSurfaceAngle>k__BackingField: 170
   <FallingVelocityCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:

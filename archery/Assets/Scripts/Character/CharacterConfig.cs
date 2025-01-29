@@ -19,6 +19,8 @@ namespace Archery.Character
         [field: SerializeField] public float MaxJumpTime { get; private set; }
         [field: SerializeField] public float MinJumpTime { get; private set; }
         [field: SerializeField] public float MaxJumpSurfaceAngle { get; private set; }
+        [field: SerializeField] public float MaxStopJumpHitSurfaceAngle { get; private set; }
+        [field: SerializeField] public float MinStopJumpHitSurfaceAngle { get; private set; }
         
         [field: Header("InAir")]
         [field: SerializeField] public AnimationCurve FallingVelocityCurve { get; private set; }
