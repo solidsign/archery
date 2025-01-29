@@ -62,7 +62,7 @@ namespace Archery.Character
             
             var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
             
-            return standingAngle < Components.Config.MaxStandAngle && Components.Input.Jump.IsDown;
+            return standingAngle < Components.Config.MaxJumpSurfaceAngle && Components.Input.Jump.IsDown;
         }
 
         protected override void PerformTransitionInternal()

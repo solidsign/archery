@@ -52,6 +52,7 @@ MonoBehaviour:
   <MaxJumpHeight>k__BackingField: 2.7
   <MaxJumpTime>k__BackingField: 0.2
   <MinJumpTime>k__BackingField: 0.05
+  <MaxJumpSurfaceAngle>k__BackingField: 80
   <FallingVelocityCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
@@ -78,4 +79,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   <MaxFallingTime>k__BackingField: 50
   <MaxFallingVelocity>k__BackingField: 10000
-  <InAirControlAcceleration>k__BackingField: 0.02
+  <InAirControlAcceleration>k__BackingField: 0.1

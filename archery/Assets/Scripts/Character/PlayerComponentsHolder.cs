@@ -33,12 +33,11 @@ namespace Archery.Character
         public CharacterConfig Config { get; }
 
 
-        public Vector3 GetNormalizedInputMoveDirection() => GetNormalizedInputMoveDirection(Vector3.up); 
-        public Vector3 GetNormalizedInputMoveDirection(Vector3 planeNormal)
+        public Vector3 GetNormalizedInputMoveDirection()
         {
             var look = Input.NormalizedLookDirection;
-            var forward = Vector3.ProjectOnPlane(look, planeNormal).normalized;
-            var right = Vector3.Cross(planeNormal, forward).normalized;
+            var forward = Vector3.ProjectOnPlane(look, Vector3.up).normalized;
+            var right = Vector3.Cross(Vector3.up, forward).normalized;
             var moveDirection = (forward * Input.NormalizedForwardMovement + right * Input.NormalizedRightMovement).normalized;
             return moveDirection;
         }
