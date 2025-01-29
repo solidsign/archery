@@ -19,9 +19,22 @@ namespace Archery.Character.StateMachine.States
         {
             base.Update();
 
+            CorrectPreservedVelocityToActualVelocity();
             ApplyInputMovementToPreservedVelocity();
             ApplyPreservedVelocity();
             ApplyFalling();
+        }
+
+        private void CorrectPreservedVelocityToActualVelocity()
+        {
+            var horizontalActualVelocity = Vector3.ProjectOnPlane(Components.Properties.Velocity.Value, Vector3.up);
+            var verticalActualVelocity = Components.Properties.Velocity.Value - horizontalActualVelocity;
+            var horizontalPreservedVelocity = Vector3.ProjectOnPlane(_preservedVelocity, Vector3.up);
+            var verticalPreservedVelocity = _preservedVelocity.Value - horizontalPreservedVelocity;
+            horizontalPreservedVelocity = Vector3.ClampMagnitude(horizontalPreservedVelocity, horizontalActualVelocity.magnitude);
+            verticalPreservedVelocity = Vector3.ClampMagnitude(verticalPreservedVelocity, verticalActualVelocity.magnitude);
+            
+            _preservedVelocity = new Velocity(horizontalPreservedVelocity + verticalPreservedVelocity);
         }
 
         private void ApplyInputMovementToPreservedVelocity()
