@@ -1,4 +1,4 @@
-namespace Archery.Character
+namespace Archery.Character.Animation
 {
     public enum PlayerAnimationState
     {

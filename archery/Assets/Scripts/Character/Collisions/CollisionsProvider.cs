@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Archery.Character
+namespace Archery.Character.Collisions
 {
     public class CollisionsProvider : MonoBehaviour, ICollisionsProvider
     {

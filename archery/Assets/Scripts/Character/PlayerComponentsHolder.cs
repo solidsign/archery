@@ -1,3 +1,7 @@
+using Archery.Character.Animation;
+using Archery.Character.Collisions;
+using Archery.Character.Input;
+using Archery.Character.Movement;
 using Archery.Character.StateMachine;
 using Archery.Core;
 using UnityEngine;

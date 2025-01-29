@@ -1,7 +1,8 @@
 using System;
+using Archery.Character.Collisions;
 using UnityEngine;
 
-namespace Archery.Character.Behaviours
+namespace Archery.Character
 {
     [Serializable]
     public class PlayerReferences

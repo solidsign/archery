@@ -1,4 +1,4 @@
-namespace Archery.Character
+namespace Archery.Character.Input
 {
     public struct KeyState
     {

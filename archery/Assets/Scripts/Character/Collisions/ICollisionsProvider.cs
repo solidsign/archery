@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Archery.Character
+namespace Archery.Character.Collisions
 {
     public interface ICollisionsProvider
     {

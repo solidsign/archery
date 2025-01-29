@@ -1,7 +1,7 @@
 using Archery.Core;
 using UnityEngine;
 
-namespace Archery.Character
+namespace Archery.Character.Movement
 {
     public interface IPhysicalObjectProperties
     {

@@ -7,8 +7,8 @@ namespace Archery.Character
 {
     public class PlayerCharacter
     {
-        public PlayerComponentsHolder Components { get; }
-        public IMovementStateMachine MovementStateMachine { get; }
+        private PlayerComponentsHolder Components { get; }
+        private IMovementStateMachine MovementStateMachine { get; }
 
         public PlayerCharacter(PlayerComponentsHolder components, IMovementStateMachine movementStateMachine)
         {

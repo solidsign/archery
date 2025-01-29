@@ -1,0 +1,28 @@
+using Archery.Core;
+using Archery.Utils;
+using UnityEngine;
+
+namespace Archery.Character.StateMachine.Transitions
+{
+    public class AnyToStandPlayerMovementTransition : PlayerMovementStateTransition
+    {
+        public override int Priority => LowestPriority;
+        public override bool CanTransitionFrom(IMovementState currentState)
+        {
+            var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
+            if (mainCollision.HasValue is false) return false;
+            
+            if (Components.Input.Slide.IsPressed) return false;
+            if (Components.Input.Jump.IsDown) return false;
+            if (Components.Input.NormalizedForwardMovement.Abs() > 0f) return false;
+            if (Components.Input.NormalizedRightMovement.Abs() > 0f) return false;
+
+            var standingAngle = Vector3.Angle(Vector3.up, mainCollision.Value.SurfaceNormal);
+            return standingAngle < Components.Config.MaxStandAngle;
+        }
+
+        protected override void PerformTransitionInternal()
+        {
+        }
+    }
+}

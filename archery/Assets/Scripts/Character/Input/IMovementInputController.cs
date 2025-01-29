@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Archery.Character
+namespace Archery.Character.Input
 {
     public interface IMovementInputController
     {

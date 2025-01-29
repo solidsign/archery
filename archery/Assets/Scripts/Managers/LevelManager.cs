@@ -1,8 +1,8 @@
-using Archery.Character.Behaviours;
+using Archery.Character;
 using Archery.Core;
 using UnityEngine;
 
-namespace Archery.Character
+namespace Archery.Managers
 {
     public class LevelManager : MonoBehaviour
     {

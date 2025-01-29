@@ -1,6 +1,4 @@
-using Archery.Character.StateMachine;
-
-namespace Archery.Character
+namespace Archery.Character.StateMachine
 {
     public abstract class PlayerMovementState : IMovementState
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Archery.Core
+namespace Archery.Utils
 {
     public static class MathExtensions
     {

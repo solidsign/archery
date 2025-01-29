@@ -1,8 +1,7 @@
-using System;
 using Archery.Core;
 using UnityEngine;
 
-namespace Archery.Character.Behaviours
+namespace Archery.Character
 {
     public class PlayerCharacterBehaviour : MonoBehaviour
     {
