@@ -33,21 +33,10 @@ namespace Archery.Character
                 .AddState(new RunPlayerMovementState())
                 .AddState(new JumpPlayerMovementState())
                 .AddState(new InAirPlayerMovementState())
-                // .AddState(new SlidePlayerMovementState())
-                // .AddState(new InertialRunPlayerMovementState())
-                // .AddState(new CrouchPlayerMovementState())
-                // .AddState(new WallRunVerticalPlayerMovementState())
-                // .AddState(new WallRunHorizontalPlayerMovementState())
-                // .AddState(new InertialWallRunVerticalPlayerMovementState())
-                // .AddState(new InertialWallRunHorizontalPlayerMovementState())
                 .AddTransition<StandPlayerMovementState>(new AnyToStandPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new AnyToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new AnyToInAirPlayerMovementTransition())
                 .AddTransition<JumpPlayerMovementState>(new GroundedToJumpPlayerMovementTransition())
-                // .AddTransition<SlidePlayerMovementState>(new GroundedSpeedToSlidePlayerMovementTransition())
-                // .AddTransition<InertialRunPlayerMovementState>(new InAirToInertialRunPlayerMovementTransition())
-                // .AddTransition<SlidePlayerMovementState>(new InAirToSlidePlayerMovementTransition())
-                // .AddTransition<CrouchPlayerMovementState>(new GroundedToCrouchPlayerMovementTransition())
                 .Build();
 
             return new PlayerCharacter(playerComponentsHolder, movementStateMachine);
@@ -63,42 +52,6 @@ namespace Archery.Character
     }
 
 
-    public class WallRunVerticalPlayerMovementState : PlayerMovementState
-    {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            Components.Animation.SetState(PlayerAnimationState.WallRunVertical);
-        }
-    }
-    
-    public class WallRunHorizontalPlayerMovementState : PlayerMovementState
-    {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            Components.Animation.SetState(PlayerAnimationState.WallRunHorizontal);
-        }
-    }
-    
-    public class InertialWallRunVerticalPlayerMovementState : PlayerMovementState
-    {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            Components.Animation.SetState(PlayerAnimationState.InertialWallRunVertical);
-        }
-    }
-    
-    public class InertialWallRunHorizontalPlayerMovementState : PlayerMovementState
-    {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            Components.Animation.SetState(PlayerAnimationState.InertialWallRunHorizontal);
-        }
-    }
-    
     public class GroundedToJumpPlayerMovementTransition : PlayerMovementStateTransition
     {
         public override int Priority => TopPriority;
@@ -117,106 +70,6 @@ namespace Archery.Character
         }
     }
 
-    public class GroundedSpeedToSlidePlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class GroundedToCrouchPlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class InAirToInertialRunPlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class InAirToSlidePlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class InAirToCrouchPlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class InAirToRunPlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
-    public class InAirToStandPlayerMovementTransition : PlayerMovementStateTransition
-    {
-        public override int Priority { get; }
-        public override bool CanTransitionFrom(IMovementState currentState)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void PerformTransitionInternal()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-    
     public class AnyToRunPlayerMovementTransition : PlayerMovementStateTransition
     {
         public override int Priority => CommonPriority;
