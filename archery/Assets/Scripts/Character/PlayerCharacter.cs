@@ -44,14 +44,14 @@ namespace Archery.Character
             GUILayout.BeginVertical();
             
             GUILayout.Label("Movement FSM");
-            GUILayout.Label($"State: {MovementStateMachine.CurrentState.GetType().Name}");
+            GUILayout.Label($"State: {MovementStateMachine.CurrentState.GetType().Name.Replace("PlayerMovementState", "")}");
             GUILayout.Space(25f);
             GUILayout.Label("Inputs");
             GUILayout.BeginHorizontal();
             GUILayout.BeginVertical();
             GUILayout.Label($"Forward: {Components.Input.NormalizedForwardMovement}");
             GUILayout.Label($"Right: {Components.Input.NormalizedRightMovement}");
-            GUILayout.Label($"Norm Move Direction: {Components.GetNormalizedInputMoveDirection()}");
+            GUILayout.Label($"Norm Move Direction: {Components.GetNormalizedInputMoveDirectionWorld()}");
             GUILayout.EndVertical();
             GUILayout.BeginVertical();
             GUILayout.Label($"Jump: isPressed: {Components.Input.Jump.IsPressed.ToShort()}, isDown: {Components.Input.Jump.IsDown.ToShort()}, isUp: {Components.Input.Jump.IsUp.ToShort()}");
@@ -68,7 +68,7 @@ namespace Archery.Character
             GUILayout.Label("Current Main Sticky: " + Components.Collisions.GetCurrentMainStickyCollision());
             if (Components.Collisions.GetCurrentMainStickyCollision().HasValue)
             {
-                GUILayout.Label("Current Main Sticky Ground Angle: " + Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal.GetAngleWithGround());
+                GUILayout.Label("Current Main Sticky Ground Angle: " + Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal.GetAngleWithWorldGround());
             }
             GUILayout.Space(25f);
             GUILayout.Label($"Jobs");

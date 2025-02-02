@@ -40,8 +40,8 @@ namespace Archery.Character.StateMachine.States
                 _currentJumpTime = newJumpTime;
 
                 var hitTop = _components.Collisions.GetCollisions().Any(x =>
-                    x.SurfaceNormal.GetAngleWithGround() < Config.MaxStopJumpHitSurfaceAngle && 
-                    x.SurfaceNormal.GetAngleWithGround() > Config.MinStopJumpHitSurfaceAngle);
+                    x.SurfaceNormal.GetAngleWithWorldGround() < Config.MaxStopJumpHitSurfaceAngle && 
+                    x.SurfaceNormal.GetAngleWithWorldGround() > Config.MinStopJumpHitSurfaceAngle);
 
                 if (hitTop || _currentJumpTime >= Config.MaxJumpTime || _currentJumpTime >= Config.MinJumpTime && _components.Input.Jump.IsPressed is false)
                 {

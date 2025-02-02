@@ -22,9 +22,13 @@ namespace Archery.Character.StateMachine
             var possibleTransitions = _transitions.Where(x => x.CanTransitionFrom(_currentState)).ToList();
             if (possibleTransitions.Any())
             {
-                _currentState.OnExit();
-                _currentState = possibleTransitions.OrderByDescending(x => x.Priority).First().PerformTransition();
-                _currentState.OnEnter();
+                var nextState = possibleTransitions.OrderByDescending(x => x.Priority).First().NextState;
+                if (nextState != _currentState)
+                {
+                    _currentState.OnExit();
+                    _currentState = nextState;
+                    _currentState.OnEnter();                    
+                } 
             }
             
             _currentState.Update();

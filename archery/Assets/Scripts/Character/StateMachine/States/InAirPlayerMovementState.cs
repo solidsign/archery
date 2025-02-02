@@ -28,23 +28,16 @@ namespace Archery.Character.StateMachine.States
 
         private void CorrectPreservedVelocityToActualVelocity()
         {
-            var horizontalActualVelocity = Components.Properties.Velocity.Value.ProjectOnGround();
-            var verticalActualVelocity = Components.Properties.Velocity.Value - horizontalActualVelocity;
-            var horizontalPreservedVelocity = _preservedVelocity.Value.ProjectOnGround();
-            var verticalPreservedVelocity = _preservedVelocity.Value - horizontalPreservedVelocity;
-            horizontalPreservedVelocity = Vector3.ClampMagnitude(horizontalPreservedVelocity, horizontalActualVelocity.magnitude);
-            verticalPreservedVelocity = Vector3.ClampMagnitude(verticalPreservedVelocity, verticalActualVelocity.magnitude);
-            
-            _preservedVelocity = new Velocity(horizontalPreservedVelocity + verticalPreservedVelocity);
+            _preservedVelocity = Components.ClampPreservedVelocity(_preservedVelocity);
         }
 
         private void ApplyInputMovementToPreservedVelocity()
         {
-            var moveDirection = Components.GetNormalizedInputMoveDirection();
+            var moveDirection = Components.GetNormalizedInputMoveDirectionWorld();
             var acceleration = moveDirection * Components.Config.InAirControlAcceleration;
             var velocityDelta = acceleration / Components.Services.Time.DeltaTime;
 
-            var horizontalPreservedVelocity = _preservedVelocity.Value.ProjectOnGround();
+            var horizontalPreservedVelocity = _preservedVelocity.Value.ProjectOnWorldGround();
             var verticalPreservedVelocity = _preservedVelocity - horizontalPreservedVelocity;
 
             horizontalPreservedVelocity = Vector3.ClampMagnitude(horizontalPreservedVelocity + velocityDelta, Mathf.Max(horizontalPreservedVelocity.magnitude, Components.Config.RunSpeed));

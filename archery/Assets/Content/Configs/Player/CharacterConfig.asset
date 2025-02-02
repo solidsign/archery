@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64c9ddd2592441c9c4ed829d1905101, type: 3}
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
-  <MaxStandAngle>k__BackingField: 45
+  <MaxStandAngle>k__BackingField: 31
   <StickToGroundSpeed>k__BackingField: 0.00001
+  <MinSlideAngle>k__BackingField: -89
+  <MaxSlideAngle>k__BackingField: 89
+  <MinSlideVelocity>k__BackingField: 35
   <RunSpeed>k__BackingField: 40
   <CrouchSpeed>k__BackingField: 5
   <JumpCurve>k__BackingField:

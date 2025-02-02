@@ -18,7 +18,7 @@ namespace Archery.Character.Collisions
             if (_cachedMainStickyCollision.HasValue) return _cachedMainStickyCollision;
             if (_currentCollisions.Count == 0) return null;
 
-            _cachedMainStickyCollision = _currentCollisions.OrderBy(x => x.SurfaceNormal.GetAngleWithGround()).First();
+            _cachedMainStickyCollision = _currentCollisions.OrderBy(x => x.SurfaceNormal.GetAngleWithWorldGround()).First();
             return _cachedMainStickyCollision;
         }
 

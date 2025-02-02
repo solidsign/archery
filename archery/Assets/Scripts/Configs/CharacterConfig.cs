@@ -9,6 +9,11 @@ namespace Archery.Character
         [field: SerializeField] public float MaxStandAngle { get; private set; }
         [field: SerializeField] public float StickToGroundSpeed { get; private set; }
         
+        [field: Header("Slide")]
+        [field: SerializeField] public float MinSlideAngle { get; private set; }
+        [field: SerializeField] public float MaxSlideAngle { get; private set; }
+        [field: SerializeField] public float MinSlideVelocity { get; set; }
+        
         [field: Header("Run")]
         [field: SerializeField] public float RunSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }
