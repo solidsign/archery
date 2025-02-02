@@ -16,7 +16,41 @@ MonoBehaviour:
   <StickToGroundSpeed>k__BackingField: 0.00001
   <MinSlideAngle>k__BackingField: -89
   <MaxSlideAngle>k__BackingField: 89
-  <MinSlideVelocity>k__BackingField: 35
+  <MinSlideVelocity>k__BackingField: 25
+  <SlideBoostCoefCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.789121
+      outSlope: 2.789121
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.076596044
+      value: 0.21363562
+      inSlope: 0.5562777
+      outSlope: 0.5562777
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.13842484
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.23135662
+      outSlope: -0.23135662
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxSlideBoostTime>k__BackingField: 0.5
   <RunSpeed>k__BackingField: 40
   <CrouchSpeed>k__BackingField: 5
   <JumpCurve>k__BackingField:

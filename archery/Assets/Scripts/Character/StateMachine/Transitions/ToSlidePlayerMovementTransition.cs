@@ -1,3 +1,4 @@
+using Archery.Character.StateMachine.States;
 using Archery.Utils;
 
 namespace Archery.Character.StateMachine.Transitions
@@ -15,7 +16,8 @@ namespace Archery.Character.StateMachine.Transitions
             return standingAngle <= Components.Config.MaxSlideAngle &&
                    standingAngle >= Components.Config.MinSlideAngle &&
                    Components.Properties.Velocity.Value.ProjectOnCurrentGround(mainCollision.Value).magnitude > Components.Config.MinSlideVelocity &&
-                   Components.Input.Slide.IsPressed;
+                   (currentState is not RunPlayerMovementState && Components.Input.Slide.IsPressed ||
+                    currentState is RunPlayerMovementState && Components.Input.Slide.IsDown);
         }
     }
 }

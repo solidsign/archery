@@ -7,6 +7,7 @@ namespace Archery.Character.Collisions
 {
     public class CollisionsProvider : MonoBehaviour, ICollisionsProvider
     {
+        [SerializeField] private SurfacesConfig _surfacesConfig;
         private readonly List<SurfaceCollision> _currentCollisions = new();
         
         private SurfaceCollision? _cachedMainStickyCollision = null;
@@ -30,8 +31,10 @@ namespace Archery.Character.Collisions
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            // todo: add stickiness rank to surface by tag and handle different slide accelerations
-            _currentCollisions.Add(new SurfaceCollision(hit.normal, 1, hit.point, null));
+            // todo: add proejectile info
+            
+            var surfaceConfig = _surfacesConfig.GetConfig(hit.gameObject.tag);
+            _currentCollisions.Add(new SurfaceCollision(hit.normal, surfaceConfig.SlideAccelerationCoef, hit.point, null));
         }
     }
 }

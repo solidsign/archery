@@ -10,8 +10,6 @@ namespace Archery.Character.StateMachine.Transitions
             var mainCollision = Components.Collisions.GetCurrentMainStickyCollision();
             if (mainCollision.HasValue is false) return false;
             
-            if (Components.Input.Slide.IsPressed) return false;
-            if (Components.Input.Jump.IsDown) return false;
             if (Components.Input.NormalizedForwardMovement.Abs() > 0f) return false;
             if (Components.Input.NormalizedRightMovement.Abs() > 0f) return false;
 

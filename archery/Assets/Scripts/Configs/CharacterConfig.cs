@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Archery.Character
 {
-    [CreateAssetMenu(fileName = "characterConfig", menuName = "Configs/Character", order = 0)]
+    [CreateAssetMenu(fileName = "characterConfig", menuName = "Configs/Character")]
     public class CharacterConfig : ScriptableObject
     {
         [field: Header("Stand")]
@@ -13,6 +13,8 @@ namespace Archery.Character
         [field: SerializeField] public float MinSlideAngle { get; private set; }
         [field: SerializeField] public float MaxSlideAngle { get; private set; }
         [field: SerializeField] public float MinSlideVelocity { get; set; }
+        [field: SerializeField] public AnimationCurve SlideBoostCoefCurve { get; set; }
+        [field: SerializeField] public float MaxSlideBoostTime { get; set; }
         
         [field: Header("Run")]
         [field: SerializeField] public float RunSpeed { get; private set; }

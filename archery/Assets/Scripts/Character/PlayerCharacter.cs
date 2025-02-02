@@ -61,6 +61,8 @@ namespace Archery.Character
             GUILayout.Space(25f);
             GUILayout.Label($"Properties");
             GUILayout.Label($"Velocity: {Components.Properties.Velocity.Value}");
+            GUILayout.Label($"VelocityH: {Components.Properties.Velocity.Value.ProjectOnWorldGround().magnitude}");
+            GUILayout.Label($"VelocityV: {Components.Properties.Velocity.Value.ProjectOnWorldUp().magnitude}");
             GUILayout.Label($"Position: {Components.Properties.Position.Value}");
             GUILayout.Space(25f);
             GUILayout.Label($"Collisions");

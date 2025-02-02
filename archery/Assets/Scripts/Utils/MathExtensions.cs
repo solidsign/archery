@@ -12,6 +12,7 @@ namespace Archery.Utils
     {
         public static float Abs(this float self) => Mathf.Abs(self);
         public static Vector3 ProjectOnWorldGround(this Vector3 self) => Vector3.ProjectOnPlane(self, MathConstants.WorldGroundNormal);
+        public static Vector3 ProjectOnWorldUp(this Vector3 self) => Vector3.Project(self, MathConstants.WorldGroundNormal);
         public static Vector3 ProjectOnCurrentGround(this Vector3 self, SurfaceCollision collision)
         {
             return Vector3.ProjectOnPlane(self, collision.SurfaceNormal);
