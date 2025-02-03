@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64c9ddd2592441c9c4ed829d1905101, type: 3}
+  m_Name: CharacterConfig
+  m_EditorClassIdentifier: 
+  <MaxStandAngle>k__BackingField: 31
+  <StickToGroundSpeed>k__BackingField: 0.00001
+  <MinSlideAngle>k__BackingField: -89
+  <MaxSlideAngle>k__BackingField: 89
+  <MinSlideVelocity>k__BackingField: 25
+  <SlideBoostCoefCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.789121
+      outSlope: 2.789121
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.076596044
+      value: 0.21363562
+      inSlope: 0.5562777
+      outSlope: 0.5562777
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.13842484
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.23135662
+      outSlope: -0.23135662
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxSlideBoostTime>k__BackingField: 0.5
+  <RunSpeed>k__BackingField: 40
+  <CrouchSpeed>k__BackingField: 5
+  <JumpCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.4164677
+      outSlope: 6.4164677
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12420389
+      value: 0.7969502
+      inSlope: 0.36343306
+      outSlope: 0.36343306
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.17852522
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.23184596
+      outSlope: 0.23184596
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxJumpHeight>k__BackingField: 2.7
+  <MaxJumpTime>k__BackingField: 0.2
+  <MinJumpTime>k__BackingField: 0.05
+  <MaxJumpSurfaceAngle>k__BackingField: 80
+  <MaxStopJumpHitSurfaceAngle>k__BackingField: 190
+  <MinStopJumpHitSurfaceAngle>k__BackingField: 170
+  <FallingVelocityCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxFallingTime>k__BackingField: 50
+  <MaxFallingVelocity>k__BackingField: 10000
+  <InAirControlAcceleration>k__BackingField: 0.1
