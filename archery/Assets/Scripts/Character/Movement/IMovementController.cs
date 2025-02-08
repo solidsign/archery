@@ -4,6 +4,7 @@ namespace Archery.Character.Movement
 {
     public interface IMovementController
     {
+        Vector3 DebugLastAppliedDelta { get; }
         PlayerJobs<IPlayerMovementJob> Jobs { get; }
 
         /// <summary>

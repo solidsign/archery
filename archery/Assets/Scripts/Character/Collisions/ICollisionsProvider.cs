@@ -7,5 +7,6 @@ namespace Archery.Character.Collisions
         void Clear();
         IReadOnlyList<SurfaceCollision> GetCollisions();
         SurfaceCollision? GetCurrentMainStickyCollision();
+        bool TryGetCurrentMainStickyCollision(out SurfaceCollision collision);
     }
 }

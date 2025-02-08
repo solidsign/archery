@@ -62,7 +62,12 @@ namespace Archery.Character.StateMachine.States
             _inAirTime = Mathf.Clamp(_inAirTime, 0f, Components.Config.MaxFallingTime);
             
             var fallingVelocity = Components.Config.FallingVelocityCurve.Evaluate(_inAirTime / Components.Config.MaxFallingTime) * Components.Config.MaxFallingVelocity;
-            Components.Movement.Move(Vector3.down * fallingVelocity * Components.Services.Time.DeltaTime);
+            var fallDirection = Vector3.down;
+            if (Components.Collisions.TryGetCurrentMainStickyCollision(out var collision))
+            {
+                fallDirection = fallDirection.ProjectOnCurrentGround(collision);
+            }
+            Components.Movement.Move(fallDirection * fallingVelocity * Components.Services.Time.DeltaTime);
         }
     }
 }

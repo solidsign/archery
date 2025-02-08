@@ -8,6 +8,7 @@ namespace Archery.Character.Movement
         private readonly CharacterConfig _config;
         private Vector3 _currentDelta;
         
+        public Vector3 DebugLastAppliedDelta { get; private set; }
         public PlayerJobs<IPlayerMovementJob> Jobs { get; } = new();
 
         public MovementController(CharacterController characterController, CharacterConfig config)
@@ -23,7 +24,8 @@ namespace Archery.Character.Movement
 
         public void Apply()
         {
-            _characterController.Move(_currentDelta + Vector3.down * _config.StickToGroundSpeed);
+            DebugLastAppliedDelta = _currentDelta + Vector3.down * _config.StickToGroundSpeed;
+            _characterController.Move(DebugLastAppliedDelta);
             _currentDelta = Vector3.zero;
         }
     }

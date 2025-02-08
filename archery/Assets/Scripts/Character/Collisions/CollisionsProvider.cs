@@ -23,6 +23,13 @@ namespace Archery.Character.Collisions
             return _cachedMainStickyCollision;
         }
 
+        public bool TryGetCurrentMainStickyCollision(out SurfaceCollision collision)
+        {
+            var c = GetCurrentMainStickyCollision();
+            collision = c.HasValue ? c.Value : default;
+            return c.HasValue;
+        }
+
         public void Clear()
         {
             _currentCollisions.Clear();
