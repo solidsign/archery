@@ -11,6 +11,7 @@ namespace Archery.Character.Input
         public float NormalizedRightMovement { get; private set; }
         public KeyState Jump { get; private set; }
         public KeyState Slide { get; private set; }
+        public KeyState Dash { get; private set; }
 
         public SimpleInputController(PlayerReferences playerReferences)
         {
@@ -47,6 +48,7 @@ namespace Archery.Character.Input
             NormalizedRightMovement = UnityEngine.Input.GetKey(KeyCode.D) ? 1f : UnityEngine.Input.GetKey(KeyCode.A) ? -1f : 0f;
             Jump = new KeyState(isPressed: UnityEngine.Input.GetKey(KeyCode.Space), isDown: UnityEngine.Input.GetKeyDown(KeyCode.Space), isUp: UnityEngine.Input.GetKeyUp(KeyCode.Space));
             Slide = new KeyState(isPressed: UnityEngine.Input.GetKey(KeyCode.LeftControl), isDown: UnityEngine.Input.GetKeyDown(KeyCode.LeftControl), isUp: UnityEngine.Input.GetKeyUp(KeyCode.LeftControl));
+            Dash = new KeyState(isPressed: UnityEngine.Input.GetKey(KeyCode.LeftShift), isDown: UnityEngine.Input.GetKeyDown(KeyCode.LeftShift), isUp: UnityEngine.Input.GetKeyUp(KeyCode.LeftShift));
         }
     }
 }

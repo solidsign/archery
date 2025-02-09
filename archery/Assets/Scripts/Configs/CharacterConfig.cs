@@ -34,5 +34,11 @@ namespace Archery.Character
         [field: SerializeField] public float MaxFallingTime { get; private set; }
         [field: SerializeField] public float MaxFallingVelocity { get; private set; }
         [field: SerializeField] public float InAirControlAcceleration { get; private set; }
+        
+        [field: Header("Dash")]
+        [field: SerializeField] public AnimationCurve DashCurve { get; private set; }
+        [field: SerializeField] public float MaxDashTime { get; private set; }
+        [field: SerializeField] public float MaxDashLength { get; private set; }
+        [field: SerializeField] public float DashCooldown { get; private set; }
     }
 }

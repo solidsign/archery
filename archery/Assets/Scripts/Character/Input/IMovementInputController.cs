@@ -9,5 +9,6 @@ namespace Archery.Character.Input
         float NormalizedRightMovement { get; }
         KeyState Jump { get; }
         KeyState Slide { get; }
+        KeyState Dash { get; }
     }
 }

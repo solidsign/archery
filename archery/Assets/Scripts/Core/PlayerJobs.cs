@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Archery.Character
 {
@@ -26,6 +27,11 @@ namespace Archery.Character
         public bool HasJob<T>()
         {
             return _jobs.Exists(x => x is T);
+        }
+
+        public int CountJobs<T>()
+        {
+            return _jobs.Count(x => x is T);
         }
     }
 }

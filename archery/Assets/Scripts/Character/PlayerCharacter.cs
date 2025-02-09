@@ -20,11 +20,12 @@ namespace Archery.Character
         {
             // read player input and world around
             Components.Input.Update();
-            
+            Components.UtilityJobs.Update();
+
             // plan movement
             MovementStateMachine.Update();
             Components.Movement.Jobs.Update();
-            
+
             // clean up after update
             Components.Collisions.Clear();
             
@@ -77,8 +78,10 @@ namespace Archery.Character
                 GUILayout.Label("Current Main Sticky Ground Angle: " + Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal.GetAngleWithWorldGround());
             }
             GUILayout.Space(25f);
-            GUILayout.Label($"Jobs");
+            GUILayout.Label($"JobsM count: {Components.Movement.Jobs.CountJobs<object>()}");
+            GUILayout.Label($"JobsU count: {Components.UtilityJobs.CountJobs<object>()}");
             GUILayout.Label($"Jump job: {Components.Movement.Jobs.HasJob<JumpPlayerMovementState.Job>().ToShort()}");
+            GUILayout.Label($"Dash CD job: {Components.UtilityJobs.HasJob<SimpleCooldownJob<DashPlayerMovementState>>().ToShort()}");
 
             GUILayout.EndVertical();
             

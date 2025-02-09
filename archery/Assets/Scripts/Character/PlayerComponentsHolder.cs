@@ -36,6 +36,7 @@ namespace Archery.Character
         public IPlayerCharacterAnimationController Animation { get; }
         public ICollisionsProvider Collisions { get; }
         public CharacterConfig Config { get; }
+        public PlayerJobs<IPlayerUtilityJob> UtilityJobs { get; } = new();
 
 
         public Vector3 GetNormalizedInputMoveDirectionWorld()
