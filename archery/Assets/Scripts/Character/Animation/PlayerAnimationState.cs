@@ -5,11 +5,8 @@ namespace Archery.Character.Animation
         Stand,
         Run,
         Slide,
-        Crouch,
-        InertialRun,
-        WallRunVertical,
-        WallRunHorizontal,
-        InertialWallRunVertical,
-        InertialWallRunHorizontal
+        HorizontalWallRun,
+        Dash,
+        Jump
     }
 }

@@ -1,4 +1,5 @@
 using System.Linq;
+using Archery.Character.Animation;
 using Archery.Utils;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Archery.Character.StateMachine.States
         public override void OnEnter()
         {
             base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.Jump);
             ApplyPreservedSpeed();
             Components.Movement.Jobs.Add(new JumpMovementJob(Components));
         }

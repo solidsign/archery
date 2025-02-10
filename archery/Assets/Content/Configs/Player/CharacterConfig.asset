@@ -148,3 +148,11 @@ MonoBehaviour:
   <MaxDashTime>k__BackingField: 0.2
   <MaxDashLength>k__BackingField: 15
   <DashCooldown>k__BackingField: 3
+  <MaxHorizontalWallRunSurfaceAngle>k__BackingField: 95
+  <MinHorizontalWallRunSurfaceAngle>k__BackingField: 82
+  <MinProjectionRatioForHorizontalWallRun>k__BackingField: 0.5
+  <MinForwardMovementForWallRun>k__BackingField: 0.8
+  <MinLookDirectionForHorizontalWallRun>k__BackingField: 0.5
+  <HorizontalWallRunSpeed>k__BackingField: 40
+  <MaxHorizontalWallRunTime>k__BackingField: 10000000
+  <HorizontalWallRunGripSpeed>k__BackingField: 1

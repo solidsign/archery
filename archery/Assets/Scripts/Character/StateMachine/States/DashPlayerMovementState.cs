@@ -1,3 +1,4 @@
+using Archery.Character.Animation;
 using Archery.Utils;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Archery.Character.StateMachine.States
         public override void OnEnter()
         {
             base.OnEnter();
+            Components.Animation.SetState(PlayerAnimationState.Dash);
             ApplyPreservedSpeed();
             var inputDir = Components.GetNormalizedInputMoveDirectionWorld();
             if (inputDir.magnitude < 0.1f) inputDir = Components.Input.NormalizedLookDirection.ProjectOnWorldGround().normalized;
