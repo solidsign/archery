@@ -119,3 +119,30 @@ MonoBehaviour:
   <MaxFallingTime>k__BackingField: 50
   <MaxFallingVelocity>k__BackingField: 10000
   <InAirControlAcceleration>k__BackingField: 0.1
+  <DashCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.2821062
+      outSlope: 2.2821062
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.048245613
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxDashTime>k__BackingField: 0.2
+  <MaxDashLength>k__BackingField: 15
+  <DashCooldown>k__BackingField: 3
