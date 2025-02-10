@@ -12,10 +12,11 @@ namespace Archery.Character
         [field: Header("Slide")]
         [field: SerializeField] public float MinSlideAngle { get; private set; }
         [field: SerializeField] public float MaxSlideAngle { get; private set; }
-        [field: SerializeField] public float MinSlideVelocity { get; set; }
-        [field: SerializeField] public AnimationCurve SlideBoostCoefCurve { get; set; }
-        [field: SerializeField] public float MaxSlideBoostTime { get; set; }
-        
+        [field: SerializeField] public float MinSlideVelocity { get; private set; }
+        [field: SerializeField] public AnimationCurve SlideBoostCoefCurve { get; private set; }
+        [field: SerializeField] public float MaxSlideBoostTime { get; private set; }
+        [field: SerializeField] public float MinSlideBoostVelocity { get; private set; }
+
         [field: Header("Run")]
         [field: SerializeField] public float RunSpeed { get; private set; }
         [field: SerializeField] public float CrouchSpeed { get; private set; }

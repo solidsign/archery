@@ -51,6 +51,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <MaxSlideBoostTime>k__BackingField: 0.5
+  <MinSlideBoostVelocity>k__BackingField: 45
   <RunSpeed>k__BackingField: 40
   <CrouchSpeed>k__BackingField: 5
   <JumpCurve>k__BackingField:
