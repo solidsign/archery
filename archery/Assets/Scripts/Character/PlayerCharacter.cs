@@ -80,8 +80,8 @@ namespace Archery.Character
             GUILayout.Space(25f);
             GUILayout.Label($"JobsM count: {Components.Movement.Jobs.CountJobs<object>()}");
             GUILayout.Label($"JobsU count: {Components.UtilityJobs.CountJobs<object>()}");
-            GUILayout.Label($"Jump job: {Components.Movement.Jobs.HasJob<JumpPlayerMovementState.Job>().ToShort()}");
-            GUILayout.Label($"Dash CD job: {Components.UtilityJobs.HasJob<SimpleCooldownJob<DashPlayerMovementState>>().ToShort()}");
+            GUILayout.Label($"Jump job: {Components.Movement.Jobs.HasJob<JumpMovementJob>().ToShort()}");
+            GUILayout.Label($"Dash CD job: {Components.UtilityJobs.HasJob<DashCooldownJob>().ToShort()}");
 
             GUILayout.EndVertical();
             

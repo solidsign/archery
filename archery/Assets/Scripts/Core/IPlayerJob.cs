@@ -8,12 +8,12 @@ namespace Archery.Character
         void Update();
     }
     
-    public class SimpleCooldownJob<T> : IPlayerUtilityJob
+    public abstract class TimerJob : IPlayerUtilityJob
     {
         private float _timeLeft;
         private readonly PlayerComponentsHolder _components;
 
-        public SimpleCooldownJob(float timeLeft, PlayerComponentsHolder components)
+        protected TimerJob(float timeLeft, PlayerComponentsHolder components)
         {
             _timeLeft = timeLeft;
             _components = components;

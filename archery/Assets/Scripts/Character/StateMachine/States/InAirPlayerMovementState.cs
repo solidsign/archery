@@ -52,7 +52,7 @@ namespace Archery.Character.StateMachine.States
 
         private void ApplyFalling()
         {
-            if (Components.Movement.Jobs.HasJob<JumpPlayerMovementState.Job>())
+            if (Components.Movement.Jobs.HasJob<JumpMovementJob>())
             {
                 _inAirTime = 0f;
                 return;
