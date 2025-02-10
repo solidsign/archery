@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64c9ddd2592441c9c4ed829d1905101, type: 3}
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
-  <MaxStandAngle>k__BackingField: 31
+  <MaxStandAngle>k__BackingField: 30
   <StickToGroundSpeed>k__BackingField: 0.00001
   <MinSlideAngle>k__BackingField: -89
   <MaxSlideAngle>k__BackingField: 89
@@ -90,9 +90,10 @@ MonoBehaviour:
   <MaxJumpHeight>k__BackingField: 2.7
   <MaxJumpTime>k__BackingField: 0.2
   <MinJumpTime>k__BackingField: 0.05
-  <MaxJumpSurfaceAngle>k__BackingField: 80
+  <MaxJumpSurfaceAngle>k__BackingField: 31
   <MaxStopJumpHitSurfaceAngle>k__BackingField: 190
   <MinStopJumpHitSurfaceAngle>k__BackingField: 170
+  <CoyoteTime>k__BackingField: 0.1
   <FallingVelocityCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
