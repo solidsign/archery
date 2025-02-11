@@ -45,7 +45,7 @@ namespace Archery.Character.StateMachine.States
         {
             var newDashTime = Mathf.Clamp(_currentDashTime + _components.Services.Time.DeltaTime, 0f, Config.MaxDashTime);
             var normalizedMoveDelta = Config.DashCurve.Evaluate(newDashTime) - Config.DashCurve.Evaluate(_currentDashTime);
-            _components.Movement.Move( _direction * normalizedMoveDelta * Config.MaxDashLength);
+            _components.Movement.Move( _direction * (normalizedMoveDelta * Config.MaxDashLength));
             _currentDashTime = newDashTime;
 
             if (_currentDashTime >= Config.MaxDashTime && _components.Input.Dash.IsPressed is false)

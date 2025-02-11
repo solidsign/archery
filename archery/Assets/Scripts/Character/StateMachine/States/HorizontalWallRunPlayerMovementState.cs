@@ -14,6 +14,10 @@ namespace Archery.Character.StateMachine.States
         {
             base.OnEnter();
             Components.Animation.SetState(PlayerAnimationState.HorizontalWallRun);
+            if (Components.Movement.Jobs.HasJob(x => x is HorizontalWallRunFallingJob) is false)
+            {
+                Components.Movement.Jobs.Add(new HorizontalWallRunFallingJob(Components));
+            }
         }
 
         private void UpdateCurrentRunDirection()
@@ -28,8 +32,35 @@ namespace Archery.Character.StateMachine.States
         {
             base.Update();
             UpdateCurrentRunDirection();
-            Components.Movement.Move(_runDirection * Components.Services.Time.DeltaTime * Components.Config.HorizontalWallRunSpeed);
+            Components.Movement.Move(_runDirection * (Components.Services.Time.DeltaTime * Components.Config.HorizontalWallRunSpeed));
             Components.Movement.Move(-_currentCollision.SurfaceNormal * Components.Config.HorizontalWallRunGripSpeed);
+        }
+    }
+
+    public class HorizontalWallRunFallingJob : IPlayerMovementJob
+    {
+        private readonly PlayerComponentsHolder _components;
+        private float _runningTime;
+
+        public HorizontalWallRunFallingJob(PlayerComponentsHolder components)
+        {
+            _components = components;
+        }
+
+        public bool IsDone { get; private set; } = false;
+        public void Update()
+        {
+            if (_components.Collisions.TryGetCurrentMainStickyCollision(out var currentCollision) is false) return;
+            if (currentCollision.SurfaceNormal.GetAngleWithWorldGround() < _components.Config.MaxStandAngle)
+            {
+                IsDone = true;
+                return;
+            }
+            
+            _runningTime += _components.Services.Time.DeltaTime;
+            var fallingVelocity = _components.Config.HorizontalWallFallingVelocityCurve.Evaluate(_runningTime / _components.Config.MaxHorizontalWallFallingTime) * _components.Config.MaxHorizontalWallFallingVelocity;
+            var fallDirection = Vector3.down.ProjectOnCurrentGround(currentCollision);
+            _components.Movement.Move(fallDirection * (fallingVelocity * _components.Services.Time.DeltaTime));
         }
     }
 }

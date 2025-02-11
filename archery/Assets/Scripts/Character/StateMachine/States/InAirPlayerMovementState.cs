@@ -67,7 +67,7 @@ namespace Archery.Character.StateMachine.States
             {
                 fallDirection = fallDirection.ProjectOnCurrentGround(collision);
             }
-            Components.Movement.Move(fallDirection * fallingVelocity * Components.Services.Time.DeltaTime);
+            Components.Movement.Move(fallDirection * (fallingVelocity * Components.Services.Time.DeltaTime));
         }
     }
 }

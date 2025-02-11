@@ -39,7 +39,7 @@ namespace Archery.Character.StateMachine.States
         {
             var newJumpTime = Mathf.Clamp(_currentJumpTime + _components.Services.Time.DeltaTime, 0f, Config.MaxJumpTime);
             var normalizedHeightDelta = Config.JumpCurve.Evaluate(newJumpTime) - Config.JumpCurve.Evaluate(_currentJumpTime);
-            _components.Movement.Move(Vector3.up * normalizedHeightDelta * Config.MaxJumpHeight);
+            _components.Movement.Move(Vector3.up * (normalizedHeightDelta * Config.MaxJumpHeight));
             _currentJumpTime = newJumpTime;
 
             var hitTop = _components.Collisions.GetCollisions().Any(x =>
