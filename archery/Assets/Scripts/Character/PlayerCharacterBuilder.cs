@@ -38,6 +38,7 @@ namespace Archery.Character
                 .AddState(new SlidePlayerMovementState())
                 .AddState(new DashPlayerMovementState())
                 .AddState(new HorizontalWallRunPlayerMovementState())
+                .AddState(new WallJumpPlayerMovementState())
                 .AddTransition<StandPlayerMovementState>(new ToStandPlayerMovementTransition())
                 .AddTransition<RunPlayerMovementState>(new ToRunPlayerMovementTransition())
                 .AddTransition<InAirPlayerMovementState>(new ToInAirPlayerMovementTransition())
@@ -45,6 +46,7 @@ namespace Archery.Character
                 .AddTransition<SlidePlayerMovementState>(new ToSlidePlayerMovementTransition())
                 .AddTransition<DashPlayerMovementState>(new ToDashPlayerMovementTransition())
                 .AddTransition<HorizontalWallRunPlayerMovementState>(new ToHorizontalWallRunPlayerMovementTransition())
+                .AddTransition<WallJumpPlayerMovementState>(new ToWallJumpPlayerMovementTransition())
                 .Build();
 
             return new PlayerCharacter(playerComponentsHolder, movementStateMachine);

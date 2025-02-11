@@ -1,4 +1,3 @@
-using Archery.Character.StateMachine.States;
 using Archery.Utils;
 using UnityEngine;
 
@@ -6,16 +5,9 @@ namespace Archery.Character.StateMachine.Transitions
 {
     public class ToHorizontalWallRunPlayerMovementTransition : PlayerMovementStateTransition
     {
-        private float _wallRunTimer = 0f;
-        
         public override int Priority => HighPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            if (currentState is HorizontalWallRunPlayerMovementState) _wallRunTimer += Components.Services.Time.DeltaTime;
-            else _wallRunTimer = 0f;
-
-            if (_wallRunTimer > Components.Config.MaxHorizontalWallRunTime) return false;
-            
             if (Components.Input.NormalizedForwardMovement < Components.Config.MinForwardMovementForWallRun) return false;
             if (Components.Collisions.TryGetCurrentMainStickyCollision(out var mainCollision) is false) return false;
             

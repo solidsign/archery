@@ -73,15 +73,15 @@ namespace Archery.Character
             GUILayout.Label($"Collisions");
             GUILayout.Label($"Collisions count: {Components.Collisions.GetCollisions().Count}");
             GUILayout.Label("Current Main Sticky: " + Components.Collisions.GetCurrentMainStickyCollision());
-            if (Components.Collisions.GetCurrentMainStickyCollision().HasValue)
+            if (Components.Collisions.TryGetCurrentMainStickyCollision(out var mainCollision))
             {
-                GUILayout.Label("Current Main Sticky Ground Angle: " + Components.Collisions.GetCurrentMainStickyCollision().Value.SurfaceNormal.GetAngleWithWorldGround());
+                GUILayout.Label("Current Main Sticky Ground Angle: " + mainCollision.SurfaceNormal.GetAngleWithWorldGround());
             }
             GUILayout.Space(25f);
-            GUILayout.Label($"JobsM count: {Components.Movement.Jobs.CountJobs<object>()}");
-            GUILayout.Label($"JobsU count: {Components.UtilityJobs.CountJobs<object>()}");
-            GUILayout.Label($"Jump job: {Components.Movement.Jobs.HasJob<JumpMovementJob>().ToShort()}");
-            GUILayout.Label($"Dash CD job: {Components.UtilityJobs.HasJob<DashCooldownJob>().ToShort()}");
+            GUILayout.Label($"JobsM count: {Components.Movement.Jobs.CountJobs(_ => true)}");
+            GUILayout.Label($"JobsU count: {Components.UtilityJobs.CountJobs(_ => true)}");
+            GUILayout.Label($"Jump job: {Components.Movement.Jobs.HasJob(x => x is JumpMovementJob).ToShort()}");
+            GUILayout.Label($"Dash CD job: {Components.UtilityJobs.HasJob(x => x is DashCooldownJob).ToShort()}");
 
             GUILayout.EndVertical();
             

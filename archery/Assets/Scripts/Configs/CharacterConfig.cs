@@ -50,7 +50,18 @@ namespace Archery.Character
         [field: SerializeField] public float MinForwardMovementForWallRun { get; private set; } = 0.8f;
         [field: SerializeField] public float MinLookDirectionForHorizontalWallRun { get; private set; }
         [field: SerializeField] public float HorizontalWallRunSpeed { get; private set; }
-        [field: SerializeField] public float MaxHorizontalWallRunTime { get; private set; }
         [field: SerializeField] public float HorizontalWallRunGripSpeed { get; private set; }
+        
+        [field: Header("Wall jump")]
+        [field: SerializeField] public float MaxWallJumpSurfaceAngle { get; private set; }
+        [field: SerializeField] public float MinWallJumpSurfaceAngle { get; private set; }
+        [field: SerializeField] public AnimationCurve HorizontalWallJumpCurve { get; private set; }
+        [field: SerializeField] public float MaxHorizontalWallJumpHeight { get; private set; }
+        [field: SerializeField] public float MaxHorizontalWallJumpTime { get; private set; }
+        [field: SerializeField] public float MinHorizontalWallJumpTime { get; private set; }
+        [field: SerializeField] public AnimationCurve VerticalWallJumpCurve { get; private set; }
+        [field: SerializeField] public float MaxVerticalWallJumpHeight { get; private set; }
+        [field: SerializeField] public float MaxVerticalWallJumpTime { get; private set; }
+        [field: SerializeField] public float MinVerticalWallJumpTime { get; private set; }
     }
 }

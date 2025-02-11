@@ -43,6 +43,7 @@ namespace Archery.Character.StateMachine.States
             _currentJumpTime = newJumpTime;
 
             var hitTop = _components.Collisions.GetCollisions().Any(x =>
+                x.ProjectileInfo.HasValue is false &&
                 x.SurfaceNormal.GetAngleWithWorldGround() < Config.MaxStopJumpHitSurfaceAngle && 
                 x.SurfaceNormal.GetAngleWithWorldGround() > Config.MinStopJumpHitSurfaceAngle);
 

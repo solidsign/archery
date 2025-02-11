@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,14 +25,14 @@ namespace Archery.Character
             _jobs.RemoveAll(x => x.IsDone);
         }
 
-        public bool HasJob<T>()
+        public bool HasJob(Predicate<TJobType> jobPredicate)
         {
-            return _jobs.Exists(x => x is T);
+            return _jobs.Exists(jobPredicate);
         }
 
-        public int CountJobs<T>()
+        public int CountJobs(Func<TJobType, bool> jobPredicate)
         {
-            return _jobs.Count(x => x is T);
+            return _jobs.Count(jobPredicate);
         }
     }
 }

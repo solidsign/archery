@@ -52,7 +52,7 @@ namespace Archery.Character.StateMachine.States
 
         private void ApplyFalling()
         {
-            if (Components.Movement.Jobs.HasJob<JumpMovementJob>())
+            if (Components.Movement.Jobs.HasJob(x => x is JumpMovementJob or WallJumpMovementJob))
             {
                 _inAirTime = 0f;
                 return;

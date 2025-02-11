@@ -154,5 +154,69 @@ MonoBehaviour:
   <MinForwardMovementForWallRun>k__BackingField: 0.8
   <MinLookDirectionForHorizontalWallRun>k__BackingField: 0.5
   <HorizontalWallRunSpeed>k__BackingField: 40
-  <MaxHorizontalWallRunTime>k__BackingField: 10000000
   <HorizontalWallRunGripSpeed>k__BackingField: 1
+  <MaxWallJumpSurfaceAngle>k__BackingField: 95
+  <MinWallJumpSurfaceAngle>k__BackingField: 82
+  <HorizontalWallJumpCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxHorizontalWallJumpHeight>k__BackingField: 10
+  <MaxHorizontalWallJumpTime>k__BackingField: 0.2
+  <MinHorizontalWallJumpTime>k__BackingField: 0.05
+  <VerticalWallJumpCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.4164677
+      outSlope: 6.4164677
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12420389
+      value: 0.7969502
+      inSlope: 0.36343306
+      outSlope: 0.36343306
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.17852522
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.23184596
+      outSlope: 0.23184596
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <MaxVerticalWallJumpHeight>k__BackingField: 2
+  <MaxVerticalWallJumpTime>k__BackingField: 0.1
+  <MinVerticalWallJumpTime>k__BackingField: 0.05

@@ -7,7 +7,7 @@ namespace Archery.Character.StateMachine.Transitions
         public override int Priority => TopPriority;
         public override bool CanTransitionFrom(IMovementState currentState)
         {
-            return Components.Input.Dash.IsDown && Components.UtilityJobs.HasJob<DashCooldownJob>() is false;
+            return Components.Input.Dash.IsDown && Components.UtilityJobs.HasJob(x => x is DashCooldownJob) is false;
         }
     }
 }

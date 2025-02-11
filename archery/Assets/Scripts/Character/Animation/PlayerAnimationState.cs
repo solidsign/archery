@@ -7,6 +7,7 @@ namespace Archery.Character.Animation
         Slide,
         HorizontalWallRun,
         Dash,
-        Jump
+        Jump,
+        WallJump
     }
 }
