@@ -150,7 +150,7 @@ MonoBehaviour:
   <DashCooldown>k__BackingField: 3
   <MaxHorizontalWallRunSurfaceAngle>k__BackingField: 95
   <MinHorizontalWallRunSurfaceAngle>k__BackingField: 82
-  <MinProjectionRatioForHorizontalWallRun>k__BackingField: 0.5
+  <MinProjectionVelocityForHorizontalWallRun>k__BackingField: 10
   <MinForwardMovementForWallRun>k__BackingField: 0.8
   <MinLookDirectionForHorizontalWallRun>k__BackingField: 0.5
   <HorizontalWallRunSpeed>k__BackingField: 40

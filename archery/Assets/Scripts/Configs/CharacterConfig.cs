@@ -43,10 +43,10 @@ namespace Archery.Character
         [field: SerializeField] public float MaxDashLength { get; private set; }
         [field: SerializeField] public float DashCooldown { get; private set; }
         
-        [field: Header("Wall run")]
+        [field: Header("Horizontal wall run")]
         [field: SerializeField] public float MaxHorizontalWallRunSurfaceAngle { get; private set; }
         [field: SerializeField] public float MinHorizontalWallRunSurfaceAngle { get; private set; }
-        [field: SerializeField] public float MinProjectionRatioForHorizontalWallRun { get; private set; }
+        [field: SerializeField] public float MinProjectionVelocityForHorizontalWallRun { get; private set; }
         [field: SerializeField] public float MinForwardMovementForWallRun { get; private set; } = 0.8f;
         [field: SerializeField] public float MinLookDirectionForHorizontalWallRun { get; private set; }
         [field: SerializeField] public float HorizontalWallRunSpeed { get; private set; }

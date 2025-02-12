@@ -19,8 +19,8 @@ namespace Archery.Character.StateMachine.Transitions
             // проверить, что есть скорость вдоль стены
             var possibleWallRunDirection = Vector3.Cross(MathConstants.WorldGroundNormal, mainCollision.SurfaceNormal).normalized;
 
-            var velocityProjectionRatio = Vector3.Project(Components.Properties.Velocity, possibleWallRunDirection).magnitude;
-            if (velocityProjectionRatio.Abs() < Components.Config.MinProjectionRatioForHorizontalWallRun) return false;
+            var velocityProjection = Vector3.Project(Components.Properties.Velocity.Value, possibleWallRunDirection).magnitude;
+            if (velocityProjection.Abs() < Components.Config.MinProjectionVelocityForHorizontalWallRun) return false;
 
             var lookProjectionRation = Vector3.Project(Components.Input.NormalizedLookDirection, possibleWallRunDirection).magnitude;
             return lookProjectionRation > Components.Config.MinLookDirectionForHorizontalWallRun;
