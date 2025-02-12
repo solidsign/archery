@@ -20,7 +20,7 @@ namespace Archery.Character.StateMachine.Transitions
             var possibleWallRunDirection = Vector3.Cross(MathConstants.WorldGroundNormal, mainCollision.SurfaceNormal).normalized;
 
             var velocityProjection = Vector3.Project(Components.Properties.Velocity.Value, possibleWallRunDirection).magnitude;
-            if (velocityProjection.Abs() < Components.Config.MinProjectionVelocityForHorizontalWallRun) return false;
+            if (velocityProjection < Components.Config.MinProjectionVelocityForHorizontalWallRun) return false;
 
             var lookProjectionRation = Vector3.Project(Components.Input.NormalizedLookDirection, possibleWallRunDirection).magnitude;
             return lookProjectionRation > Components.Config.MinLookDirectionForHorizontalWallRun;
